@@ -13,6 +13,7 @@ spec:
   template:
     metadata:
       name: '{{ path.basename }}'
+      namespace: test
     spec:  
       project: default
       source: 

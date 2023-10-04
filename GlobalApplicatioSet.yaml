@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: global-aplicationset
+  name: global-application-set
   namespace: argocd
 spec:
   generators:
   - git:
-    repoURL: https://github.com/sabababoy/labondemand.git
-    revision: HEAD
-    directories:
-    - path: services/*
+      repoURL: https://github.com/sabababoy/labondemand
+      revision: HEAD
+      directories:
+      - path: services/*
   template:
     metadata:
       name: '{{ path.basename }}'

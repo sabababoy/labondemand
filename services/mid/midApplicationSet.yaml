@@ -7,7 +7,7 @@ spec:
   - list:
       elements:
       - cluster: labondemand
-        url: https://10.196.203.150
+        url: https://10.196.203.150:6443
   template:
     metadata:
       name: '{{cluster}}-main'
@@ -19,4 +19,4 @@ spec:
         path: services/midservers/templates
       destination:
         server: '{{url}}'
-        namespace: main
+        namespace: argocd

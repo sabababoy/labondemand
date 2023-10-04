@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: main
+spec:
+  generators:
+  - list:
+      elements:
+      - cluster: labondemand
+        url: https://10.196.203.150
+  template:
+    metadata:
+      name: '{{cluster}}-main'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/argoproj/argo-cd.git
+        targetRevision: HEAD
+        path: services/*
+      destination:
+        server: '{{url}}'
+        namespace: main

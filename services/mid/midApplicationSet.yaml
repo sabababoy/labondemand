@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: midservers
+spec:
+  generators:
+  - list:
+      elements:
+      - cluster: labondemand
+        url: https://10.196.203.150
+  template:
+    metadata:
+      name: '{{cluster}}-main'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/sabababoy/labondemand.git
+        targetRevision: HEAD
+        path: services/midservers/templates
+      destination:
+        server: '{{url}}'
+        namespace: main

@@ -8,7 +8,7 @@ spec:
   - list:
       elements:
         - cluster: labondemand
-          url: https://kubernetes.default.svc
+          url: https://10.196.203.150:6443
   template:
     metadata:
       name: '{{ path.basename }}'

@@ -4,11 +4,12 @@ metadata:
   name: global-aplicationset
   namespace: argocd
 spec:
-  generators:
-  - list:
-      elements:
-        - cluster: labondemand
-          url: https://kubernetes.default.svc
+    generators:
+    - git:
+        repoURL: https://github.com/sabababoy/labondemand.git
+        revision: HEAD
+        directories:
+          - path: services/*
   template:
     metadata:
       name: '{{ path.basename }}'
@@ -17,7 +18,7 @@ spec:
       source: 
         repoURL: https://github.com/sabababoy/labondemand.git
         targetRevision: HEAD
-        path: services/midServers/templates
+        path: .
       destination:
         server: https://kubernetes.default.svc
         namespace: argocd

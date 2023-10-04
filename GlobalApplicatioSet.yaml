@@ -4,12 +4,12 @@ metadata:
   name: global-aplicationset
   namespace: argocd
 spec:
-    generators:
-    - git:
-        repoURL: https://github.com/sabababoy/labondemand.git
-        revision: HEAD
-        directories:
-          - path: services/*
+  generators:
+  - git:
+    repoURL: https://github.com/sabababoy/labondemand.git
+    revision: HEAD
+    directories:
+    - path: services/*
   template:
     metadata:
       name: '{{ path.basename }}'

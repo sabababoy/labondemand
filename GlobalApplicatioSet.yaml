@@ -12,7 +12,8 @@ spec:
       - path: services/*
   template:
     metadata:
-      name: 'global-applicationset'
+      labels:
+        app.kubernetes.io/managed-by: argocd
     spec:  
       project: default
       source: 

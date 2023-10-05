@@ -20,7 +20,7 @@ spec:
         targetRevision: HEAD
         helm:
           valueFiles:
-          - services/midservers/values/{{path.basename}}/*.yaml
+          - services/midservers/values/aleksandr.karmazin/*.yaml
           chart:
             git:
               repoURL: https://github.com/sabababoy/labondemand.git

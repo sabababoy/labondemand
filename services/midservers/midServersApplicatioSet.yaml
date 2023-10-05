@@ -28,5 +28,5 @@ spec:
               repoURL: 'https://github.com/sabababoy/labondemand.git'
               revision: HEAD
           valueFiles:
-            - services/midservers/values/aleksandr.karmazin/*.yaml
+            - 'services/midservers/values/{{path.basename}}/*.yaml'
 

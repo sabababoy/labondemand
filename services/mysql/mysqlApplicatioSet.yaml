@@ -2,29 +2,29 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: mysql-applicationset
-  namespace: argocd
 spec:
   generators:
   - git:
       repoURL: https://github.com/sabababoy/labondemand
       revision: HEAD
       directories:
-      - path: services/mysql/templates
+      - path: services/mysql/values/*
   template:
     metadata:
-      name: 'mysql-{{ path.basename }}'
+      name: '{{path.basename}}'
     spec:  
       project: default
       source: 
         repoURL: https://github.com/sabababoy/labondemand.git
         targetRevision: HEAD
-        path: services/mysql/templates
+        helm:
+          valueFiles:
+          - services/mysql/values/{{path.basename}}/*.yaml
+          chart:
+            git:
+              repoURL: https://github.com/sabababoy/labondemand.git
+              revision: HEAD
+              path: global/services/mysql/templates
       destination:
         server: https://kubernetes.default.svc
         namespace: argocd
-      syncPolicy:
-        syncOptions:
-        - CreateNamesapce=true
-        automated:
-          selfHeal: true
-          prune: true

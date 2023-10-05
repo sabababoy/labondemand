@@ -7,7 +7,7 @@ spec:
   generators:
     - git:
         directories:
-          - path: services/midservers/values/*
+          - path: services/midservers/helm/values/*
         repoURL: 'https://github.com/sabababoy/labondemand'
         revision: HEAD
   template:
@@ -24,7 +24,7 @@ spec:
         helm:
           chart:
             git:
-              path: services/midservers
+              path: services/midservers/helm
               repoURL: 'https://github.com/sabababoy/labondemand.git'
               revision: HEAD
           valueFiles:

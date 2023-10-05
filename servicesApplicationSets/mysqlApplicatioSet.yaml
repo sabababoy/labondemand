@@ -7,7 +7,7 @@ spec:
   generators:
     - git:
         directories:
-          - path: services/mysql/helm/values/*
+          - path: services/mysql/values/*
         repoURL: 'https://github.com/sabababoy/labondemand'
         revision: HEAD
   template:
@@ -21,7 +21,7 @@ spec:
       source:
         repoURL: 'https://github.com/sabababoy/labondemand.git'
         targetRevision: HEAD
-        path: services/mysql/helm
+        path: services/mysql/
         helm:
           valueFiles:
             - 'values/{{path.basename}}/values.yaml'

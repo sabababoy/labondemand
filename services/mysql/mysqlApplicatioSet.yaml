@@ -1,24 +1,23 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: midservers-aplicationset
+  name: mysql-aplicationset
   namespace: argocd
 spec:
   generators:
-  - git:
-      repoURL: https://github.com/sabababoy/labondemand
-      revision: HEAD
-      directories:
-      - path: services/midservers/templates
+  - list:
+      elements:
+        - cluster: labondemand
+          url: https://10.196.203.150:6443
   template:
     metadata:
-      name: 'midserver-{{ path.basename }}'
+      name: 'mysql-{{ path.basename }}'
     spec:  
       project: default
       source: 
         repoURL: https://github.com/sabababoy/labondemand.git
         targetRevision: HEAD
-        path: services/midServers/templates
+        path: services/mysql/templates
       destination:
         server: https://kubernetes.default.svc
         namespace: argocd

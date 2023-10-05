@@ -11,6 +11,8 @@ spec:
       directories:
       - path: services/*
   template:
+    metadata:
+      name: 'test'
     spec:  
       project: default
       source: 

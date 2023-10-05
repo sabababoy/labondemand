@@ -2,7 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: global-applicationset
-  namespace: argocd
 spec:
   generators:
   - git:
@@ -12,14 +11,13 @@ spec:
       - path: services/*
   template:
     metadata:
-      labels:
-        app.kubernetes.io/managed-by: argocd
+      name: '{{path.basename}}'
     spec:  
       project: default
       source: 
         repoURL: https://github.com/sabababoy/labondemand.git
         targetRevision: HEAD
-        path: '{{ path }}'
+        path: 'services/{{path.basename}}'
       destination:
         server: https://kubernetes.default.svc
         namespace: argocd

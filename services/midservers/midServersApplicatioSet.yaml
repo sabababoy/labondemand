@@ -2,34 +2,29 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: midservers-applicationset
-  namespace: argocd
 spec:
   generators:
   - git:
       repoURL: https://github.com/sabababoy/labondemand
       revision: HEAD
       directories:
-      - path: services/midservers/*
+      - path: services/midservers/values/*
   template:
     metadata:
-      labels:
-        app.kubernetes.io/managed-by: argocd
+      name: '{{path.basename}}'
     spec:  
       project: default
       source: 
         repoURL: https://github.com/sabababoy/labondemand.git
         targetRevision: HEAD
-        path: services/midservers/templates
+        helm:
+          valueFiles:
+          - services/midserver/values/{{path.basename}}/*.yaml
+          chart:
+            git:
+              repoURL: https://github.com/sabababoy/labondemand.git
+              revision: HEAD
+              path: global/services/midservers/templates
       destination:
         server: https://kubernetes.default.svc
         namespace: argocd
-      syncPolicy:
-        syncOptions:
-        - CreateNamesapce=true
-        automated:
-          selfHeal: true
-          prune: true
-      helm:
-        valueFiles:
-        - services/midserver/values/{{path.basename}}/*.yaml
-        releaseName: "{{path.basename}}-midserver"

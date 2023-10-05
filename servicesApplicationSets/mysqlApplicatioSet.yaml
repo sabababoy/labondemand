@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: mysql-applicationset
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        directories:
+          - path: services/mysql/helm/values/*
+        repoURL: 'https://github.com/sabababoy/labondemand'
+        revision: HEAD
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      destination:
+        namespace: argocd
+        server: 'https://kubernetes.default.svc'
+      project: default
+      source:
+        repoURL: 'https://github.com/sabababoy/labondemand.git'
+        targetRevision: HEAD
+        path: services/mysql/helm
+        helm:
+          valueFiles:
+            - 'values/{{path.basename}}/values.yaml'

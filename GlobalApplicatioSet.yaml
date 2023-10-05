@@ -32,7 +32,7 @@ spec:
   source:
     repoURL: 'https://github.com/sabababoy/labondemand.git'
     targetRevision: HEAD
-    path: services/*
+    path: servicesApplicationSets/
   destination:
     namespace: argocd
     server: 'https://kubernetes.default.svc'

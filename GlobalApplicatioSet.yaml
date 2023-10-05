@@ -12,8 +12,7 @@ spec:
       - path: services/*
   template:
     metadata:
-      labels:
-        app.kubernetes.io/managed-by: argocd
+      name: 'global-{{ path.basename }}'
     spec:  
       project: default
       source: 

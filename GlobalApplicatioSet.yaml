@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: global-applicationset
+  name: global-applicationset-test
 spec:
   generators:
   - git:

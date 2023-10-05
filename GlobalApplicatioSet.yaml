@@ -23,11 +23,3 @@ spec:
       destination:
         server: https://kubernetes.default.svc
         namespace: argocd
-      syncPolicy:
-        syncOptions:
-          - CreateNamespace=true
-          - Prune=true
-      helm:
-        valueFiles:
-        - values.yaml
-        releaseName: global-{{path.name}}

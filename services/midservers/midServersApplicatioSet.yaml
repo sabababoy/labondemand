@@ -9,10 +9,11 @@ spec:
       repoURL: https://github.com/sabababoy/labondemand
       revision: HEAD
       directories:
-      - path: services/midservers/templates
+      - path: services/midservers/*
   template:
     metadata:
-      name: 'midserver-{{ path.basename }}'
+      labels:
+        app.kubernetes.io/managed-by: argocd
     spec:  
       project: default
       source: 
@@ -28,3 +29,7 @@ spec:
         automated:
           selfHeal: true
           prune: true
+      helm:
+        valueFiles:
+        - services/midserver/values/{{path.basename}}/*.yaml
+        releaseName: "{{path.basename}}-midserver"

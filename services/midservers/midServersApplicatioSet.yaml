@@ -24,7 +24,7 @@ spec:
         helm:
           chart:
             git:
-              path: services/midservers/templates
+              path: services/midservers
               repoURL: 'https://github.com/sabababoy/labondemand.git'
               revision: HEAD
           valueFiles:

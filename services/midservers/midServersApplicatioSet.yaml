@@ -21,12 +21,8 @@ spec:
       source:
         repoURL: 'https://github.com/sabababoy/labondemand.git'
         targetRevision: HEAD
+        path: services/midservers
         helm:
-          chart:
-            git:
-              path: services/midservers/helm
-              repoURL: 'https://github.com/sabababoy/labondemand.git'
-              revision: HEAD
           valueFiles:
             - 'services/midservers/values/{{path.basename}}/*.yaml'
 

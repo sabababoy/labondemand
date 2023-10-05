@@ -11,7 +11,7 @@ spec:
       - path: services/mysql/values/*
   template:
     metadata:
-      name: '{{path.basename}}'
+      name: '{{path.basename}}-sql'
     spec:  
       project: default
       source: 

@@ -9,7 +9,7 @@ spec:
       repoURL: https://github.com/sabababoy/labondemand
       revision: HEAD
       directories:
-      - path: services/midServers
+      - path: services/*
   template:
     metadata:
       name: '{{ path.basename }}'

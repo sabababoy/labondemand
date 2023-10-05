@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: global-application-set
+  name: global-applicationset
   namespace: argocd
 spec:
   generators:
@@ -12,7 +12,7 @@ spec:
       - path: services/*
   template:
     metadata:
-      name: '{{ path.basename }}'
+      name: global-applicationset
       namespace: test
     spec:  
       project: default

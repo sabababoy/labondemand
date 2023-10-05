@@ -5,10 +5,11 @@ metadata:
   namespace: argocd
 spec:
   generators:
-  - list:
-      elements:
-        - cluster: labondemand
-          url: https://10.196.203.150:6443
+  - git:
+      repoURL: https://github.com/sabababoy/labondemand
+      revision: HEAD
+      directories:
+      - path: services/mysql/templates
   template:
     metadata:
       name: 'mysql-{{ path.basename }}'

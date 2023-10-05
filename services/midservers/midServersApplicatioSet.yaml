@@ -19,6 +19,8 @@ spec:
         server: 'https://kubernetes.default.svc'
       project: default
       source:
+        repoURL: 'https://github.com/sabababoy/labondemand.git'
+        targetRevision: HEAD
         helm:
           chart:
             git:
@@ -26,10 +28,5 @@ spec:
               repoURL: 'https://github.com/sabababoy/labondemand.git'
               revision: HEAD
           valueFiles:
-            - services/midservers/values/aleksandrkarmazin/*.yaml
-        repoURL: 'https://github.com/sabababoy/labondemand.git'
-        targetRevision: HEAD
-      destination:
-        server: https://kubernetes.default.svc
-        namespace: argocd
+            - services/midservers/values/aleksandr.karmazin/*.yaml
 

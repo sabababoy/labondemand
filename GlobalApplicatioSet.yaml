@@ -10,3 +10,12 @@ spec:
       revision: HEAD
       directories:
       - path: services/*
+  template:
+    spec:  
+      project: default
+      source: 
+        repoURL: https://github.com/sabababoy/labondemand.git
+        targetRevision: HEAD
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: argocd

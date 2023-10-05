@@ -25,7 +25,7 @@ spec:
             git:
               repoURL: https://github.com/sabababoy/labondemand.git
               revision: HEAD
-              path: global/services/midservers/templates
+              path: services/midservers/templates
       destination:
         server: https://kubernetes.default.svc
         namespace: argocd

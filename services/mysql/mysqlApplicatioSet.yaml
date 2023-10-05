@@ -25,7 +25,7 @@ spec:
             git:
               repoURL: https://github.com/sabababoy/labondemand.git
               revision: HEAD
-              path: global/services/mysql/templates
+              path: services/mysql/templates
       destination:
         server: https://kubernetes.default.svc
         namespace: argocd

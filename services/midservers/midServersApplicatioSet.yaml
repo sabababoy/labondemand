@@ -11,7 +11,7 @@ spec:
           url: https://10.196.203.150:6443
   template:
     metadata:
-      name: 'midServer-{{ path.basename }}'
+      name: 'midserver-{{ path.basename }}'
     spec:  
       project: default
       source: 

@@ -12,7 +12,8 @@ spec:
       - path: services/*
   template:
     metadata:
-      name: 'global-{{ path.basename }}'
+      labels:
+        app.kubernetes.io/managed-by: argocd
     spec:  
       project: default
       source: 
@@ -22,3 +23,11 @@ spec:
       destination:
         server: https://kubernetes.default.svc
         namespace: argocd
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+          - Prune=true
+      helm:
+        valueFiles:
+        - values.yaml
+        releaseName: global-{{path.name}}

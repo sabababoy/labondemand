@@ -12,7 +12,7 @@ spec:
       - path: services/*
   template:
     metadata:
-      name: global-applicationset
+      name: 'global-applicationset-{{ path.basename }}'
       namespace: test
     spec:  
       project: default

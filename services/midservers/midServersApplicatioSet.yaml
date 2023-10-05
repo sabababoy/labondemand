@@ -5,27 +5,31 @@ metadata:
   namespace: argocd
 spec:
   generators:
-  - git:
-      repoURL: https://github.com/sabababoy/labondemand
-      revision: HEAD
-      directories:
-      - path: services/midservers/values/*
+    - git:
+        directories:
+          - path: services/midservers/values/*
+        repoURL: 'https://github.com/sabababoy/labondemand'
+        revision: HEAD
   template:
     metadata:
       name: '{{path.basename}}'
-    spec:  
+    spec:
+      destination:
+        namespace: argocd
+        server: 'https://kubernetes.default.svc'
       project: default
-      source: 
-        repoURL: https://github.com/sabababoy/labondemand.git
-        targetRevision: HEAD
+      source:
         helm:
-          valueFiles:
-          - 'services/midservers/values/aleksandr.karmazin/*.yaml'
           chart:
             git:
-              repoURL: https://github.com/sabababoy/labondemand.git
-              revision: HEAD
               path: services/midservers/templates
+              repoURL: 'https://github.com/sabababoy/labondemand.git'
+              revision: HEAD
+          valueFiles:
+            - services/midservers/values/aleksandr.karmazin/*.yaml
+        repoURL: 'https://github.com/sabababoy/labondemand.git'
+        targetRevision: HEAD
       destination:
         server: https://kubernetes.default.svc
         namespace: argocd
+

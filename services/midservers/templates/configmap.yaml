@@ -4,7 +4,7 @@ metadata:
   name: {{ .Values.configMap.name }}
   namespace: {{ .Values.namespace }}
   labels: 
-    app: {{ .Values..name }}
+    app: {{ .Values.name }}
 data:
   {{- range $key, $value := .Values.configMap.data }}
   {{ $key }}: {{ $value | quote }}

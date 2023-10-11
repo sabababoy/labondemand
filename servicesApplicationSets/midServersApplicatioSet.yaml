@@ -12,7 +12,7 @@ spec:
         revision: HEAD
   template:
     metadata:
-      name: '{{path.basename}}'
+      name: '{{path.basename}}.midserver'
     spec:
       destination:
         namespace: argocd

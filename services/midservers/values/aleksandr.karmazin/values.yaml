@@ -1,5 +1,5 @@
 image: "sabababoy/mid"
-name: "aleksandr-§karmazin-midserver"
+name: "aleksandr-karmazin-midserver"
 namespace: "aleksandr-karmazin"
 configmap:
   name: "aleksandr-karmazin-midserver"

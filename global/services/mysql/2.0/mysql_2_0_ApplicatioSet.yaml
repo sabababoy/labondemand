@@ -1,18 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: mysql-1.0-manager
+  name: mysql-2.0-manager
   namespace: argocd
 spec:
   generators:
     - git:
         directories:
-          - path: global/services/mysql/1.0/chart/values/*
+          - path: global/services/mysql/2.0/chart/values/*
         repoURL: 'https://github.com/sabababoy/labondemand'
         revision: HEAD
   template:
     metadata:
-      name: 'mysql-1.0-{{path.basename}}'
+      name: 'mysql-2.0-{{path.basename}}'
     spec:
       destination:
         namespace: argocd
@@ -21,7 +21,7 @@ spec:
       source:
         repoURL: 'https://github.com/sabababoy/labondemand.git'
         targetRevision: HEAD
-        path: global/services/mysql/1.0/chart
+        path: global/services/mysql/2.0/chart
         helm:
           valueFiles:
             - 'values/{{path.basename}}/values.yaml'

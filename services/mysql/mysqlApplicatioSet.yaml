@@ -34,7 +34,7 @@ spec:
   generators:
     - git:
         directories:
-          - path: services/mysql
+          - path: services/mysql/*
         repoURL: 'https://github.com/sabababoy/labondemand'
         revision: HEAD
   template:

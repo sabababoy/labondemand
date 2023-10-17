@@ -24,4 +24,4 @@ spec:
         path: services/mysql/1.0
         helm:
           valueFiles:
-            - 'values/{{path.basename}}/values.yaml'
+            - 'values/{{path.basename}}/values/values.yaml'

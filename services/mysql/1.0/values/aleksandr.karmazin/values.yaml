@@ -1,10 +1,6 @@
-image: "sabababoy/mid"
-name: "aleksandr-karmazin-midserver"
+image: "mysql:latest"
+name: "aleksandr-karmazin-mysql"
 namespace: "aleksandr-karmazin"
 configmap:
-  name: "aleksandr-karmazin-midserver"
-  data:
-    MID_INSTANCE_URL: "https://empakarmazin.service-now.com/"
-    MID_INSTANCE_USERNAME: "midServerTest"
-    MID_INSTANCE_PASSWORD: "575491Dom!"
-    MID_SERVER_NAME: "TestMidServer"
+  name: "aleksandr-karmazin-mysql"
+  

@@ -5,5 +5,5 @@ port: 3306
 configmap:
   name: "aleksandr-karmazin-mysql"
   data:
-    MYSQL_ROOT_PASSWORD: test
+    MYSQL_ROOT_PASSWORD: "test"
   

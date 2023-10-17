@@ -1,6 +1,7 @@
 image: "sabababoy/mid"
 name: "aleksandr-karmazin-midserver"
 namespace: "aleksandr-karmazin"
+port: 443
 configmap:
   name: "aleksandr-karmazin-midserver"
   data:

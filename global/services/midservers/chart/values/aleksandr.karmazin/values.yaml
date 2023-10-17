@@ -1,9 +1,9 @@
 image: "sabababoy/mid"
-name: "aleksandr.karmazin.midserver"
-namespace: "aleksandr.karmazin"
+name: "aleksandr-karmazin-midserver"
+namespace: "aleksandr-karmazin"
 port: 443
 configmap:
-  name: "aleksandr.karmazin.midserver"
+  name: "aleksandr-karmazin-midserver"
   data:
     MID_INSTANCE_URL: "https://empakarmazin.service-now.com/"
     MID_INSTANCE_USERNAME: "midServerTest"

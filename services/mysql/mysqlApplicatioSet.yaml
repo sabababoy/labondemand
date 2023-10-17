@@ -1,13 +1,40 @@
+# apiVersion: argoproj.io/v1alpha1
+# kind: ApplicationSet
+# metadata:
+#   name: mysql-applicationset
+#   namespace: argocd
+# spec:
+#   generators:
+#     - git:
+#         directories:
+#           - path: services/mysql/*/values/*
+#         repoURL: 'https://github.com/sabababoy/labondemand'
+#         revision: HEAD
+#   template:
+#     metadata:
+#       name: '{{path.basename}}'
+#     spec:
+#       destination:
+#         namespace: argocd
+#         server: 'https://kubernetes.default.svc'
+#       project: default
+#       source:
+#         repoURL: 'https://github.com/sabababoy/labondemand.git'
+#         targetRevision: HEAD
+#         path: services/mysql/{{path.basename}}
+#         helm:
+#           valueFiles:
+#             - 'values/{{path.basename}}/values.yaml'
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: mysql-applicationset
+  name: global-applicationset
   namespace: argocd
 spec:
   generators:
     - git:
         directories:
-          - path: services/mysql/*/values/*
+          - path: services/mysql
         repoURL: 'https://github.com/sabababoy/labondemand'
         revision: HEAD
   template:
@@ -21,7 +48,4 @@ spec:
       source:
         repoURL: 'https://github.com/sabababoy/labondemand.git'
         targetRevision: HEAD
-        path: services/mysql/*
-        helm:
-          valueFiles:
-            - 'values/{{path.basename}}/values.yaml'
+        path: services/mysql/{{path.basename}}

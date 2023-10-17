@@ -12,7 +12,7 @@ spec:
         revision: HEAD
   template:
     metadata:
-      name: 'mysql-{{path.basename}}'
+      name: 'mysql-1.0-{{path.basename}}'
     spec:
       destination:
         namespace: argocd

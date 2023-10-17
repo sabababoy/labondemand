@@ -27,7 +27,7 @@ spec:
   generators:
     - git:
         directories:
-          - path: services/global/1.0/values/*
+          - path: services/*
         repoURL: 'https://github.com/sabababoy/labondemand'
         revision: HEAD
   template:

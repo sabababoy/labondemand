@@ -21,3 +21,11 @@ spec:
         image: {{ .Values.image }}
         ports:
         - containerPort: {{ .Values.port }}
+        env:
+        {{- range $key, $value := .Value.configmap.data }}
+        - name: {{ $key }}
+          valueFrom:
+            configMapKeyRef:
+              name: {{ .Values.configmap.name}}
+              key: {{ $key }}
+        {{- end }}

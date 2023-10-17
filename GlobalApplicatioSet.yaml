@@ -1,20 +1,44 @@
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: global-application
+#   namespace: argocd
+# spec:
+#   project: default
+#   source:
+#     repoURL: 'https://github.com/sabababoy/labondemand.git'
+#     targetRevision: HEAD
+#     path: services/*
+#   destination:
+#     namespace: argocd
+#     server: 'https://kubernetes.default.svc'
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#     syncOptions:
+#     - CreateNamespace=true
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
-  name: global-application
+  name: global-applicationset
   namespace: argocd
 spec:
-  project: default
-  source:
-    repoURL: 'https://github.com/sabababoy/labondemand.git'
-    targetRevision: HEAD
-    path: services/*
-  destination:
-    namespace: argocd
-    server: 'https://kubernetes.default.svc'
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-    - CreateNamespace=true
+  generators:
+    - git:
+        directories:
+          - path: services/global/1.0/values/*
+        repoURL: 'https://github.com/sabababoy/labondemand'
+        revision: HEAD
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      destination:
+        namespace: argocd
+        server: 'https://kubernetes.default.svc'
+      project: default
+      source:
+        repoURL: 'https://github.com/sabababoy/labondemand.git'
+        targetRevision: HEAD
+        path: services/*

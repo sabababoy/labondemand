@@ -1,0 +1,9 @@
+image: "mysql:latest"
+name: "yogev-nisim-mysql"
+namespace: "yogev-nisim"
+port: 3306
+configmap:
+  name: "yogev-nisim-mysql"
+  data:
+    MYSQL_ROOT_PASSWORD: "test"
+  

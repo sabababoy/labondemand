@@ -26,6 +26,6 @@ spec:
         - name: {{ $key }}
           valueFrom:
             configMapKeyRef:
-              name: {{ .Values.configmap.name}}
+              name: {{ .Values.configmap.name }}
               key: {{ $key }}
         {{- end }}

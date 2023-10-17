@@ -28,7 +28,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: mysql-global-applicationset
+  name: mysql-manager
   namespace: argocd
 spec:
   generators:

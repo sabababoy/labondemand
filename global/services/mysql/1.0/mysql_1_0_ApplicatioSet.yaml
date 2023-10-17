@@ -25,3 +25,9 @@ spec:
         helm:
           valueFiles:
             - 'values/{{path.basename}}/values.yaml'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true

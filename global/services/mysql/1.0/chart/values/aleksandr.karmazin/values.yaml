@@ -1,6 +1,7 @@
 image: "mysql:latest"
 name: "aleksandr-karmazin-mysql"
 namespace: "aleksandr-karmazin"
+port: 3306
 configmap:
   name: "aleksandr-karmazin-mysql"
   

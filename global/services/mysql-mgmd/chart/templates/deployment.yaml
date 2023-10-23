@@ -21,9 +21,9 @@ spec:
         imagePullPolicy: IfNotPresent
         image: mysql/mysql-cluster:latest
         args:
-        - ndb_mgmd
+        - ndb_mgm
         ports:
-        - name: ndb-mgm
+        - name: ndb-mgmd
           containerPort: 1186
         volumeMounts:
         - name: config-volume

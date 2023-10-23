@@ -20,14 +20,14 @@ spec:
         imagePullPolicy: IfNotPresent
         image: mysql/mysql-cluster:latest
         args:
-        - -f /etc/mysql-cluster/config.ini
+        - "--config-dir=/mysql/mysql-cluster/config.ini"
         - ndb_mgmd
         ports:
         - name: ndb-mgmd
           containerPort: 1186
         volumeMounts:
         - name: config-volume
-          mountPath: /etc/mysql-cluster
+          mountPath: /mysql/mysql-cluster
         env:
         {{- range $key, $value := .Values.configmap.data }}
         - name: {{ $key }}

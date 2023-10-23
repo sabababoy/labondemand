@@ -6,7 +6,7 @@ metadata:
   labels: 
     app: {{ .Values.name }}
 data:
-  config.ini: |
+  config.cnf: |
     [NDBD DEFAULT]
     NoOfReplicas=2
     DataMemory=80M

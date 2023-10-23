@@ -1,9 +1,9 @@
-name: "aleksandr-karmazin-ndb-mgmd"
+name: "aleksandr-karmazin-ndb-data-node"
 namespace: "aleksandr-karmazin"
 user: "aleksandr-karmazin"
 port: 443
 configmap:
-  name: "aleksandr-karmazin-ndb-mgmd"
+  name: "aleksandr-karmazin-ndb-data-node"
   data:
     MID_INSTANCE_URL: "https://empakarmazin.service-now.com/"
     MID_INSTANCE_USERNAME: "midServerTest"

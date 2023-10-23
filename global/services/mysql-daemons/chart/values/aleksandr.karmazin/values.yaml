@@ -1,0 +1,8 @@
+name: "aleksandr-karmazin-mysql-daemon"
+namespace: "aleksandr-karmazin"
+user: "aleksandr-karmazin"
+port: 443
+configmap:
+  name: "aleksandr-karmazin-mysql-daemon"
+  data:
+    MYSQL_RANDOM_ROOT_PASSWORD: "true"

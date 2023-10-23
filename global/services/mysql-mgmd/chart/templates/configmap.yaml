@@ -18,23 +18,23 @@ data:
 
     [ndb_mgmd]
     NodeId=1
-    hostname=10.97.79.135
+    hostname={{ .Values.user }}-ndb-mgmd.{{ .Values.user }}.svc.cluster.local
     datadir=/var/lib/mysql
 
     [ndbd]
     NodeId=2
-    hostname=172.19.0.3
+    hostname={{ .Values.user }}-ndb-data-node.{{ .Values.user }}.svc.cluster.local
     datadir=/var/lib/mysql
 
     [ndbd]
     NodeId=3
-    hostname=172.19.0.4
+    hostname={{ .Values.user }}-ndb-data-node.{{ .Values.user }}.svc.cluster.local
     datadir=/var/lib/mysql
 
     [mysqld]
     NodeId=4
-    hostname=172.19.0.10
+    hostname={{ .Values.user }}-mysql-daemon.{{ .Values.user }}.svc.cluster.local
 
     [mysqld]
     NodeId=5
-    hostname=172.19.0.9
+    hostname={{ .Values.user }}-mysql-daemon.{{ .Values.user }}.svc.cluster.local

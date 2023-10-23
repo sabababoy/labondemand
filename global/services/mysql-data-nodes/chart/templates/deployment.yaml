@@ -25,13 +25,4 @@ spec:
         ports:
         - name: ndbd
           containerPort: 2202
-      affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
-              - key: app
-                operator: In
-                values:
-                - {{ .Values.name }}
-            topologyKey: "kubernetes.io/hostname"
+      

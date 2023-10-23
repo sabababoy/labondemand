@@ -6,38 +6,35 @@ metadata:
   labels: 
     app: {{ .Values.name }}
 data:
+  {{- range $key, $value := .Values.configmap.data }}
+  {{ $key }}: {{ $value | quote }}
+  {{- end }}
   config.ini: |
-    [NDBD DEFAULT]
+    [ndbd default]
     NoOfReplicas=2
     DataMemory=80M
     IndexMemory=18M
 
-    [MYSQL DEFAULT]
 
-    [NDB_MGMD DEFAULT]
-
-    [TCP DEFAULT]
-
-    [NDB MGMD]
+    [ndb_mgmd]
     NodeId=1
-    HostName={{ .Values.user }}-ndb-mgmd
+    hostname={{ .Values.user }}-ndb-mgmd
+    datadir=/var/lib/mysql
 
-    [NDBD]
+    [ndbd]
     NodeId=2
-    HostName={{ .Values.user }}-ndb-data-node
+    hostname=172.19.0.3
+    datadir=/var/lib/mysql
 
-    [NDBD]
+    [ndbd]
     NodeId=3
-    HostName={{ .Values.user }}-ndb-data-node
+    hostname=172.19.0.4
+    datadir=/var/lib/mysql
 
-    [MYSQLD]
+    [mysqld]
     NodeId=4
-    HostName=mysqld1
+    hostname=172.19.0.10
 
-    [MYSQLD]
+    [mysqld]
     NodeId=5
-    HostName=mysqld2
-    
-  {{- range $key, $value := .Values.configmap.data }}
-  {{ $key }}: {{ $value | quote }}
-  {{- end }}
+    hostname=172.19.0.9

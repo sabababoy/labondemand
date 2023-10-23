@@ -20,11 +20,11 @@ spec:
         imagePullPolicy: IfNotPresent
         image: mysql/mysql-cluster:latest
         args:
-        - /etc/mysql-cluster/config.ini
         - ndb_mgmd
         ports:
         - name: ndb-mgmd
           containerPort: 1186
+        workingDir: /etc/mysql-cluster
         volumeMounts:
         - name: config-volume
           mountPath: /etc/mysql-cluster

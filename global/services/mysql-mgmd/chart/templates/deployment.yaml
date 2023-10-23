@@ -19,7 +19,6 @@ spec:
       - name: {{ .Values.name }}
         imagePullPolicy: IfNotPresent
         image: mysql/mysql-cluster:latest
-        command: ["/bin/sh", "echo 'TEST'"]
         args:
         - ndb_mgmd
         ports:

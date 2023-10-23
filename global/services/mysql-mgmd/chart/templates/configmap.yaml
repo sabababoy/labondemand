@@ -9,7 +9,7 @@ data:
   {{- range $key, $value := .Values.configmap.data }}
   {{ $key }}: {{ $value | quote }}
   {{- end }}
-  config.ini: |
+  mysql-cluster.cnf: |
     [ndbd default]
     NoOfReplicas=2
     DataMemory=80M

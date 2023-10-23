@@ -20,7 +20,6 @@ spec:
         imagePullPolicy: IfNotPresent
         image: mysql/mysql-cluster:latest
         args:
-        - /etc/mysql-cluster
         - ndb_mgmd
         ports:
         - name: ndb-mgmd

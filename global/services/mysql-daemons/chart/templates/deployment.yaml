@@ -24,7 +24,7 @@ spec:
         - mysqld
         ports:
         - name: ndbd
-          containerPort: 2202
+          containerPort: 3306
         env:
         {{- range $key, $value := .Values.configmap.data }}
         - name: {{ $key }}

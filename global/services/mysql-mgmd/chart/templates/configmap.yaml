@@ -18,7 +18,7 @@ data:
 
     [ndb_mgmd]
     NodeId=1
-    hostname={{ .Values.user }}-ndb-mgmd:1186
+    hostname={{ .Values.user }}-ndb-mgmd.{{ .Values.user }}.svc.cluster.local
     datadir=/var/lib/mysql
 
     [ndbd]

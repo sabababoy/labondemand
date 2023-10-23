@@ -38,5 +38,6 @@ data:
     [mysqld]
     NodeId=5
     hostname={{ .Values.user }}-mysql-daemon.{{ .Values.user }}.svc.cluster.local
+    
     [mysql_cluster]
     ndb-connectstring={{ .Values.user }}-ndb-mgmd.{{ .Values.user }}.svc.cluster.local

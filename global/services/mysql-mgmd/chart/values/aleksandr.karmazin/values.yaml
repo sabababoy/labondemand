@@ -4,7 +4,4 @@ port: 443
 configmap:
   name: "aleksandr-karmazin-ndb-mgmd"
   data:
-    MID_INSTANCE_URL: "https://empakarmazin.service-now.com/"
-    MID_INSTANCE_USERNAME: "midServerTest"
-    MID_INSTANCE_PASSWORD: "575491Dom!"
-    MID_SERVER_NAME: "TestMidServer"
+    NDB_MGMD: "/etc/mysql-cluster/config.ini"

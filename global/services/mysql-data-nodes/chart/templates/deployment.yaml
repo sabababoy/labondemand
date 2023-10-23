@@ -22,7 +22,7 @@ spec:
         image: mysql/mysql-cluster:latest
         args:
         - ndbd
-        - --ndb-connectstring={{ .Values.user }}-ndb-mgmd-0:1186
+        - --ndb-connectstring={{ .Values.user }}-ndb-mgmd
         ports:
         - name: ndbd
           containerPort: 2202

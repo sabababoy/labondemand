@@ -1,11 +1,12 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ .Values.name }}
   namespace: {{ .Values.namespace }}
   labels:
     app: {{ .Values.name }}
 spec:
+  serviceName: {{ .Values.name }}
   replicas: 2
   selector:
     matchLabels:
@@ -24,4 +25,12 @@ spec:
         ports:
         - name: ndbd
           containerPort: 2202
+        env:
+        {{- range $key, $value := .Values.configmap.data }}
+        - name: {{ $key }}
+          valueFrom:
+            configMapKeyRef:
+              name: {{ $.Values.configmap.name }}
+              key: {{ $key }}
+        {{- end }}
       

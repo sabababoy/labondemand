@@ -5,4 +5,4 @@ port: 443
 configmap:
   name: "aleksandr-karmazin-ndb-mgmd"
   data:
-    NDB_MGMD: "/etc/mysql-cluster/config.ini"
+    NDB_MGMDssss: "/etc/mysql-cluster/config.ini"

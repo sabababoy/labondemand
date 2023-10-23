@@ -19,6 +19,10 @@ spec:
       - name: {{ .Values.name }}
         imagePullPolicy: IfNotPresent
         image: mysql/mysql-cluster:latest
+        args:
+        - --initial
+        - "--config-dir=/etc/mysql-cluster/config.ini"
+        - ndb_mgmd
         ports:
         - name: ndb-mgmd
           containerPort: 1186

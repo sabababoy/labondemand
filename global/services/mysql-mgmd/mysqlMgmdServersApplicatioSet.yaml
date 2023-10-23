@@ -7,7 +7,7 @@ spec:
   generators:
     - git:
         directories:
-          - path: global/services/midservers/chart/values/*
+          - path: global/services/mysql-mgmd/chart/values/*
         repoURL: 'https://github.com/sabababoy/labondemand'
         revision: HEAD
   template:
@@ -21,7 +21,7 @@ spec:
       source:
         repoURL: 'https://github.com/sabababoy/labondemand.git'
         targetRevision: HEAD
-        path: global/services/midservers/chart
+        path: global/services/mysql-mgmd/chart
         helm:
           valueFiles:
             - 'values/{{path.basename}}/values.yaml'

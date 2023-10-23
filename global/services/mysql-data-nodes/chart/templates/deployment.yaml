@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.name }}
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: {{ .Values.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.name }}
+    spec:
+      containers:
+      - name: {{ .Values.name }}
+        imagePullPolicy: IfNotPresent
+        image: mysql/mysql-cluster:latest
+        args:
+        - ndbd
+        - --ndb-connectionstring={{ .Values.user }}-ndb-mgmd:1186
+        ports:
+        - name: ndbd
+          containerPort: 2202
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - {{ .Values.name }}
+            topologyKey: "kubernetes.io/hostname"

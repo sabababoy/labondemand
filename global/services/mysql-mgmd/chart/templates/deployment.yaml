@@ -23,7 +23,7 @@ spec:
         args:
         - ndb_mgmd
         ports:
-        - name: ndb-mgmd
+        - name: ndb-mgm
           containerPort: 1186
         volumeMounts:
         - name: config-volume

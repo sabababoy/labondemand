@@ -1,5 +1,6 @@
 name: "aleksandr-karmazin-ndb-mgmd"
 namespace: "aleksandr-karmazin"
+user: "aleksandr-karmazin"
 port: 443
 configmap:
   name: "aleksandr-karmazin-ndb-mgmd"

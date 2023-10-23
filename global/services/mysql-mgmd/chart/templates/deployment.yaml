@@ -20,7 +20,7 @@ spec:
         imagePullPolicy: IfNotPresent
         image: mysql/mysql-cluster:latest
         ports:
-        - name: mdb-mgmd
+        - name: ndb-mgmd
           containerPort: 1186
         volumeMounts:
         - name: config-volume

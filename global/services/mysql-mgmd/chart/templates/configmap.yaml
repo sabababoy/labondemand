@@ -20,15 +20,15 @@ data:
 
     [NDB MGMD]
     NodeId=1
-    HostName=mgmd
+    HostName={{ .Values.user }}-ndb-mgmd
 
     [NDBD]
     NodeId=2
-    HostName=ndbd1
+    HostName={{ .Values.user }}-ndb-data-node
 
     [NDBD]
     NodeId=3
-    HostName=ndbd1
+    HostName={{ .Values.user }}-ndb-data-node
 
     [MYSQLD]
     NodeId=4

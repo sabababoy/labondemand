@@ -19,8 +19,6 @@ spec:
       - name: {{ .Values.name }}
         imagePullPolicy: IfNotPresent
         image: mysql/mysql-cluster:latest
-        args:
-        - ndb_mgmd
         ports:
         - name: ndb-mgmd
           containerPort: 1186

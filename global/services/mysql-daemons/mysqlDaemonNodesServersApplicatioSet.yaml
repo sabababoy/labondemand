@@ -1,18 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: mysql-data-nodes-manager
+  name: mysql-daemons-manager
   namespace: argocd
 spec:
   generators:
     - git:
         directories:
-          - path: global/services/mysql-data-nodes/chart/values/*
+          - path: global/services/mysql-daemons/chart/values/*
         repoURL: 'https://github.com/sabababoy/labondemand'
         revision: HEAD
   template:
     metadata:
-      name: '{{path.basename}}.mysql-data-nodes'
+      name: '{{path.basename}}.mysql-daemons'
     spec:
       destination:
         namespace: argocd
@@ -21,7 +21,7 @@ spec:
       source:
         repoURL: 'https://github.com/sabababoy/labondemand.git'
         targetRevision: HEAD
-        path: global/services/mysql-data-nodes/chart
+        path: global/services/mysql-daemons/chart
         helm:
           valueFiles:
             - 'values/{{path.basename}}/values.yaml'

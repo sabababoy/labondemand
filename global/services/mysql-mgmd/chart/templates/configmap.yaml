@@ -23,12 +23,12 @@ data:
 
     [ndbd]
     NodeId=2
-    hostname={{ .Values.user }}-ndb-data-node.{{ .Values.user }}.svc.cluster.local
+    hostname={{ .Values.user }}-ndb-data-node-0.{{ .Values.user }}-ndb-data-node.{{ .Values.user }}.svc.cluster.local
     datadir=/var/lib/mysql
 
     [ndbd]
     NodeId=3
-    hostname={{ .Values.user }}-ndb-data-node.{{ .Values.user }}.svc.cluster.local
+    hostname={{ .Values.user }}-ndb-data-node-1.{{ .Values.user }}-ndb-data-node.{{ .Values.user }}.svc.cluster.local
     datadir=/var/lib/mysql
 
     [mysqld]

@@ -26,7 +26,7 @@ spec:
           containerPort: 1186
         volumeMounts:
         - name: config-volume
-          mountPath: /etc/
+          mountPath: /etc/mysql-cluster.cnf
         env:
         {{- range $key, $value := .Values.configmap.data }}
         - name: {{ $key }}

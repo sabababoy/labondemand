@@ -34,5 +34,9 @@ data:
     datadir=/var/lib/mysql
 
     [mysqld]
-    [mysqld]
+    NodeId=4
+    hostname={{ .Values.user }}-mysql-daemon.{{ .Values.user }}.svc.cluster.local
 
+    [mysqld]
+    NodeId=5
+    hostname={{ .Values.user }}-mysql-daemon.{{ .Values.user }}.svc.cluster.local

@@ -19,7 +19,7 @@ data:
     AllowUnresolvedHostnames=1
 
     [ndb_mgmd]
-    hostname=0.0.0.0
+    hostname={{ .Values.user }}-ndb-mgmd-0.{{ .Values.user }}-ndb-mgmd.{{ .Values.user }}.svc.cluster.local
     PortNumber=1186
 
     [ndbd]

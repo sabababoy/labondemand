@@ -9,5 +9,5 @@ spec:
     app: {{ .Values.name }}
   ports:
   - protocol: TCP
-    port: 2202
-    targetPort: 2202
+    port: 1186
+    targetPort: 1186

@@ -9,3 +9,9 @@ data:
   {{- range $key, $value := .Values.configmap.data }}
   {{ $key }}: {{ $value | quote }}
   {{- end }}
+  my.cnf: |
+    [mysqld]
+    user=mysql
+    ndbcluster
+    ndb-connectstring={{ .Values.user }}-ndb-mgmd-0.{{ .Values.user }}-ndb-mgmd.{{ .Values.user }}.svc.cluster.local
+    datadir=/var/lib/mysql

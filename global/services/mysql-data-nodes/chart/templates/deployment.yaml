@@ -21,8 +21,8 @@ spec:
         imagePullPolicy: IfNotPresent
         image: mysql/mysql-cluster:latest
         args:
-        - --ndb-connectstring={{ .Values.user }}-ndb-mgmd-0.{{ .Values.user }}-ndb-mgmd.{{ .Values.user }}.svc.cluster.local
         - ndbd
+        - --ndb-connectstring={{ .Values.user }}-ndb-mgmd-0.{{ .Values.user }}-ndb-mgmd.{{ .Values.user }}.svc.cluster.local
         ports:
         - name: ndbd
           containerPort: 2202

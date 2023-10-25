@@ -22,12 +22,8 @@ spec:
         image: sabababoy/mysql-cluster:8.0
         command: ["/bin/sh", "-c"]
         args: [
-          "/usr/sbin/sshd -D & ndb_mgmd -f /etc/mysql-cluster.cnf --nodaemon"
+          "ssh-keygen -A && /usr/sbin/sshd -D & ndb_mgmd -f /etc/mysql-cluster.cnf --nodaemon"
         ]
-        lifecycle:
-          postStart:
-            exec:
-              command: ["/bin/sh", "-c", "ssh-keygen -A"]
         ports:
         - name: ndb-mgmd
           containerPort: 1186

@@ -25,7 +25,7 @@ spec:
         lifecycle:
           postStart:
             exec:
-              command: ["/bin/sh", "-c", "ssh-keygen -A; /usr/sbin/sshd &"]
+              command: ["/bin/sh", "-c", "ssh-keygen -A; /usr/sbin/sshd -D &"]
         ports:
         - name: ndb-mgmd
           containerPort: 1186

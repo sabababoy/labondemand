@@ -19,12 +19,10 @@ spec:
       - name: {{ .Values.name }}
         imagePullPolicy: Always
         image: sabababoy/mysql-cluster:8.0
-        command: ["/bin/sh", "-c"]
-        args: [
-          "mysqld"
-        ]
+        args:
+        - mysqld
         ports:
-        - name: mysql
+        - name: ndbd
           containerPort: 3306
         volumeMounts:
         - name: config-volume

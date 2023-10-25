@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: midservers-manager
+  name: users-manager
   namespace: argocd
 spec:
   generators:
@@ -12,7 +12,7 @@ spec:
         revision: HEAD
   template:
     metadata:
-      name: '{{path.basename}}-midserver'
+      name: '{{path.basename}}'
     spec:
       destination:
         namespace: argocd

@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: mysql-data-nodes-manager
+  name: mysql-data-nodes-8.0-manager
   namespace: argocd
 spec:
   generators:

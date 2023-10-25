@@ -1,4 +1,4 @@
 apiVersion: v2
-name: midservers
-description: A Helm chart for midservers
+name: mysql-2.0
+description: A Helm chart for mysql-2.0
 version: 0.1.0

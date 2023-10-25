@@ -1,4 +1,4 @@
 apiVersion: v2
-name: midservers
-description: A Helm chart for midservers
+name: mysql-cluster-8.0-daemons
+description: A Helm chart for mysql-cluster-8.0-daemons
 version: 0.1.0

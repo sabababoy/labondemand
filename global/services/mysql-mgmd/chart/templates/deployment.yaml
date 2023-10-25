@@ -22,10 +22,6 @@ spec:
         image: sabababoy/mysql-cluster:latest
         args:
         - ndb_mgmd
-        lifecycle:
-          postStart:
-            exec:
-              command: ["/usr/sbin/sshd", "-D"]
         ports:
         - name: ndb-mgmd
           containerPort: 1186

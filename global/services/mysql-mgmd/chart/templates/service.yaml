@@ -8,9 +8,11 @@ spec:
   selector:
     app: {{ .Values.name }}
   ports:
-  - protocol: TCP
+  - name: mgmd
+    protocol: TCP
     port: 1186
     targetPort: 1186
-  - protocol: TCP
+  - name: ssh
+    protocol: TCP
     port: 22
     targetPort: 22

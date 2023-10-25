@@ -25,7 +25,7 @@ spec:
         lifecycle:
           postStart:
             exec:
-              command: ["/usr/sbin/sshd", "-D"]
+              command: ["/usr/sbin/sshd", "-D", "&"]
         ports:
         - name: ndb-mgmd
           containerPort: 1186

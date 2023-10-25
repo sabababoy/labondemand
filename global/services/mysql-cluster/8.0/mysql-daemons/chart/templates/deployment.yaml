@@ -19,7 +19,10 @@ spec:
       - name: {{ .Values.name }}
         imagePullPolicy: Always
         image: sabababoy/mysql-cluster:8.0
-        args: ["mysqld; ssh-keyhen -A && bash /usr/sbin/sshd -D &"]
+        command: ["/bin/sh", "-c"]
+        args: [
+          "ssh-keygen -A && /usr/sbin/sshd -D & ./entrypoint.sh mysqld"
+        ]
         ports:
         - name: ndbd
           containerPort: 3306

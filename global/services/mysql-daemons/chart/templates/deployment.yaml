@@ -17,8 +17,12 @@ spec:
     spec:
       containers:
       - name: {{ .Values.name }}
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         image: sabababoy/mysql-cluster:latest
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "ssh-keygen -A; /usr/sbin/sshd -D &"]
         args:
         - mysqld
         ports:

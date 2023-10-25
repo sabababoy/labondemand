@@ -22,7 +22,7 @@ spec:
         image: sabababoy/mysql-cluster:8.0
         command: ["/bin/sh", "-c"]
         args: [
-          "ssh-keygen -A && /usr/sbin/sshd -D & ndb_mgmd -f /etc/mysql-cluster.cnf --nodaemon"
+          "ssh-keygen -A && /usr/sbin/sshd -D & /usr/sbin/ndb_mgmd -f /etc/mysql-cluster.cnf --configdir=/var/lib/ndb --initial --nodaemon"
         ]
         ports:
         - name: ndb-mgmd

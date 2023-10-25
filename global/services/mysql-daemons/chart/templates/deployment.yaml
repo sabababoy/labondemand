@@ -22,7 +22,7 @@ spec:
         lifecycle:
           postStart:
             exec:
-              command: ["/bin/sh", "-c", "ssh-keygen -A; /usr/sbin/sshd -D &"]
+              command: ["/bin/sh", "-c", "ssh-keygen -A"]
         args:
         - mysqld
         ports:

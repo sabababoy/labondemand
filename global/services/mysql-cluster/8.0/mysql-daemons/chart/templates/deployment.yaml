@@ -21,7 +21,7 @@ spec:
         image: sabababoy/mysql-cluster:8.0
         command: ["/bin/sh", "-c"]
         args: [
-          "ssh-keygen -A && /usr/sbin/sshd -D & mysqld --datadir=/var/lib/mysql"
+          "ssh-keygen -A && /usr/sbin/sshd -D & mkdir /var/lib/mysql && mysqld --datadir=/var/lib/mysql"
         ]
         ports:
         - name: mysql

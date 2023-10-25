@@ -20,9 +20,10 @@ spec:
       - name: {{ .Values.name }}
         imagePullPolicy: IfNotPresent
         image: sabababoy/mysql-cluster:8.0
-        args:
-        - ndbd
-        - --ndb-connectstring={{ .Values.user }}-ndb-mgmd-0.{{ .Values.user }}-ndb-mgmd.{{ .Values.user }}.svc.cluster.local
+        command: ["/bin/sh", "-c"]
+        args: [
+          "ssh-keygen -A && /usr/sbin/sshd -D & /usr/sbin/ndbd -c {{ .Values.user }}-ndb-mgmd-0.{{ .Values.user }}-ndb-mgmd.{{ .Values.user }}.svc.cluster.local --initial --nodaemon-v"
+        ]
         ports:
         - name: ndbd
           containerPort: 2202

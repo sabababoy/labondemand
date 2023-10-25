@@ -21,10 +21,10 @@ spec:
         image: sabababoy/mysql-cluster:8.0
         command: ["/bin/sh", "-c"]
         args: [
-          "ssh-keygen -A && /usr/sbin/sshd -D & mysqld --initialized --console"
+          "ssh-keygen -A && /usr/sbin/sshd -D & mysqld --initial"
         ]
         ports:
-        - name: ndbd
+        - name: mysql
           containerPort: 3306
         volumeMounts:
         - name: config-volume

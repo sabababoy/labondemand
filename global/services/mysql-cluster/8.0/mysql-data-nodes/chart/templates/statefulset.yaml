@@ -19,7 +19,7 @@ spec:
       containers:
       - name: {{ .Values.name }}
         imagePullPolicy: IfNotPresent
-        image: mysql/mysql-cluster:latest
+        image: sabababoy/mysql-cluster:8.0
         args:
         - ndbd
         - --ndb-connectstring={{ .Values.user }}-ndb-mgmd-0.{{ .Values.user }}-ndb-mgmd.{{ .Values.user }}.svc.cluster.local

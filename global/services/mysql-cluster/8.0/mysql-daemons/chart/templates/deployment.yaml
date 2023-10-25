@@ -18,7 +18,7 @@ spec:
       containers:
       - name: {{ .Values.name }}
         imagePullPolicy: Always
-        image: sabababoy/mysql-cluster:latest
+        image: sabababoy/mysql-cluster:8.0
         lifecycle:
           postStart:
             exec:

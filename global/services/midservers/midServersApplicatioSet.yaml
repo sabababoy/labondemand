@@ -12,7 +12,7 @@ spec:
         revision: HEAD
   template:
     metadata:
-      name: '{{path.basename}}.midserver'
+      name: '{{path.basename}}-midserver'
     spec:
       destination:
         namespace: argocd
@@ -25,11 +25,11 @@ spec:
         helm:
           valueFiles:
             - 'values/{{path.basename}}/values.yaml'
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-    - CreateNamespace=true
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
 
 

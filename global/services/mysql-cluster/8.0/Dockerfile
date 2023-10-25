@@ -1,4 +1,4 @@
-FROM mysql/mysql-cluster:latest
+FROM mysql/mysql-cluster:8.0
 
 RUN microdnf install -y openssh-server openssh-clients passwd sudo lsof which procps net-tools
 RUN chmod +x /usr/sbin/sshd

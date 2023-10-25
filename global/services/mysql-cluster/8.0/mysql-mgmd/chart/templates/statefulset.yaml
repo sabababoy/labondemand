@@ -19,7 +19,7 @@ spec:
       containers:
       - name: {{ .Values.name }}
         imagePullPolicy: IfNotPresent
-        image: sabababoy/mysql-cluster:latest
+        image: sabababoy/mysql-cluster:8.0
         args:
         - ndb_mgmd
         lifecycle:

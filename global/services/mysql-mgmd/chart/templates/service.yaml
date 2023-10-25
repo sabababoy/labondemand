@@ -11,3 +11,6 @@ spec:
   - protocol: TCP
     port: 1186
     targetPort: 1186
+  - protocol: TCP
+    port: 22
+    targetPort: 22

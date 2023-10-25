@@ -22,9 +22,15 @@ spec:
         image: sabababoy/mysql-cluster:latest
         args:
         - ndb_mgmd
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/usr/sbin/sshd", "-D"]
         ports:
         - name: ndb-mgmd
           containerPort: 1186
+        - name: ssh
+          containerPort: 22
         volumeMounts:
         - name: config-volume
           mountPath: /etc/mysql-cluster.cnf

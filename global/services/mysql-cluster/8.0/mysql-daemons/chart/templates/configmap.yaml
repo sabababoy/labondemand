@@ -15,3 +15,6 @@ data:
     ndbcluster
     ndb-connectstring={{ .Values.user }}-ndb-mgmd-0.{{ .Values.user }}-ndb-mgmd.{{ .Values.user }}.svc.cluster.local
     datadir=/var/lib/mysql
+
+    [mysql_cluster]
+    ndb-connectstring={{ .Values.user }}-ndb-mgmd-0.{{ .Values.user }}-ndb-mgmd.{{ .Values.user }}.svc.cluster.local

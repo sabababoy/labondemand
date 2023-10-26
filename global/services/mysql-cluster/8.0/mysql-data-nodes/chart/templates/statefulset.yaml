@@ -22,7 +22,7 @@ spec:
         image: sabababoy/mysql-cluster:8.0
         command: ["/bin/sh", "-c"]
         args: [
-          "ssh-keygen -A && /usr/sbin/sshd -D & sleep 60 &&  /usr/sbin/ndbd -c {{ .Values.user }}-ndb-mgmd-0.{{ .Values.user }}-ndb-mgmd.{{ .Values.user }}.svc.cluster.local --initial --nodaemon -v"
+          "ssh-keygen -A && /usr/sbin/sshd -D & sleep 60 &&  /usr/sbin/ndbd -c {{ .Values.user }}-ndb-mgmd-0.{{ .Values.user }}-ndb-mgmd.{{ .Values.user }}.svc.cluster.local --nodaemon -v"
         ]
         ports:
         - name: ndbd

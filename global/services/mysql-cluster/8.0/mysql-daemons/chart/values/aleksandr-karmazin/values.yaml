@@ -1,5 +1,5 @@
 name: "aleksandr-karmazin-mysql-daemon"
-version: "8.0"
+version: "80"
 namespace: "aleksandr-karmazin"
 user: "aleksandr-karmazin"
 port: 443

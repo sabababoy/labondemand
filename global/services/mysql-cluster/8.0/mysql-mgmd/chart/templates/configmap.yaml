@@ -34,9 +34,4 @@ data:
     ServerPort=1186
 
     [mysqld]
-    NodeId=4
-    hostname={{ .Values.user }}-mysql-daemon-0.{{ .Values.user }}-mysql-daemon.{{ .Values.user }}.svc.cluster.local
-
     [mysqld]
-    NodeId=5
-    hostname={{ .Values.user }}-mysql-daemon-1.{{ .Values.user }}-mysql-daemon.{{ .Values.user }}.svc.cluster.local

@@ -6,8 +6,10 @@ metadata:
   labels: 
     app: {{ .Values.name }}-{{ .Values.version }}
 data:
+  {{- if .Values.configmap.data}}
   {{- range $key, $value := .Values.configmap.data }}
   {{ $key }}: {{ $value | quote }}
+  {{- end }}
   {{- end }}
   mysql-cluster.cnf: |
     [ndbd default]

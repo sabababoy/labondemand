@@ -1,12 +1,11 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: {{ .Values.name }}
   namespace: {{ .Values.namespace }}
   labels:
     app: {{ .Values.name }}
 spec:
-  serviceName: {{ .Values.name }}
   replicas: 2
   selector:
     matchLabels:

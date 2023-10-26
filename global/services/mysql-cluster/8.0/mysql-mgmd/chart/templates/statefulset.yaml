@@ -39,11 +39,11 @@ spec:
         - name: {{ $key }}
           valueFrom:
             configMapKeyRef:
-              name: {{ $.Values.configmap.name }}
+              name: {{ $.Values.configmap.name }}-{{ .Values.version }}
               key: {{ $key }}
         {{- end }}
         {{- end }}
       volumes:
       - name: config-volume
         configMap:
-          name: {{ .Values.configmap.name }}
+          name: {{ .Values.configmap.name }}-{{ .Values.version }}

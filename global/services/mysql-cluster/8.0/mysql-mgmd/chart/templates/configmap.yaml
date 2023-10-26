@@ -23,12 +23,12 @@ data:
     PortNumber=1186
 
     [ndbd]
-    NodeId=2
+    NodeId=1
     hostname={{ .Values.user }}-ndb-data-node-0.{{ .Values.user }}-ndb-data-node.{{ .Values.user }}.svc.cluster.local
     ServerPort=1186
 
     [ndbd]
-    NodeId=3
+    NodeId=2
     hostname={{ .Values.user }}-ndb-data-node-1.{{ .Values.user }}-ndb-data-node.{{ .Values.user }}.svc.cluster.local
     ServerPort=1186
 

@@ -1,28 +1,28 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: {{ .Values.name }}
+  name: {{ .Values.name }}-{{ .Values.version }}
   namespace: {{ .Values.namespace }}
   labels:
-    app: {{ .Values.name }}
+    app: {{ .Values.name }}-{{ .Values.version }}
 spec:
-  serviceName: {{ .Values.name }}
+  serviceName: {{ .Values.name }}-{{ .Values.version }}
   replicas: 2
   selector:
     matchLabels:
-      app: {{ .Values.name }}
+      app: {{ .Values.name }}-{{ .Values.version }}
   template:
     metadata:
       labels:
-        app: {{ .Values.name }}
+        app: {{ .Values.name }}-{{ .Values.version }}
     spec:
       containers:
-      - name: {{ .Values.name }}
+      - name: {{ .Values.name }}-{{ .Values.version }}
         imagePullPolicy: IfNotPresent
         image: sabababoy/mysql-cluster:8.0
         command: ["/bin/sh", "-c"]
         args: [
-          "ssh-keygen -A && /usr/sbin/sshd -D & sleep 60 &&  /usr/sbin/ndbd -c {{ .Values.user }}-ndb-mgmd-0.{{ .Values.user }}-ndb-mgmd.{{ .Values.user }}.svc.cluster.local --nodaemon -v"
+          "ssh-keygen -A && /usr/sbin/sshd -D & sleep 60 &&  /usr/sbin/ndbd -c {{ .Values.user }}-ndb-mgmd-{{ .Values.version }}-0.{{ .Values.user }}-ndb-mgmd-{{ .Values.version }}.{{ .Values.user }}.svc.cluster.local --nodaemon -v"
         ]
         ports:
         - name: ndbd

@@ -21,7 +21,7 @@ spec:
         image: sabababoy/mysql-cluster:8.0
         command: ["/bin/sh", "-c"]
         args: [
-          "ssh-keygen -A && /usr/sbin/sshd -D & sleep 120 &&  ./entrypoint.sh mysqld"
+          "ssh-keygen -A && /usr/sbin/sshd -D & sleep 1200 &&  ./entrypoint.sh mysqld"
         ]
         ports:
         - name: ndbd

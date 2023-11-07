@@ -18,7 +18,11 @@ spec:
       containers:
       - name: {{ .Values.name }}
         imagePullPolicy: IfNotPresent
-        image: ubuntu
+        image: sabababoy/ubuntu
+        command: ["/bin/sh", "-c"]
+        args: [
+          "ssh-keygen -A && /usr/sbin/sshd -D"
+        ]
         ports:
         - containerPort: {{ .Values.port }}
         env:

@@ -1,18 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: mysql-daemons-8.0-manager
+  name: linux-ubuntu-manager
   namespace: argocd
 spec:
   generators:
     - git:
         directories:
-          - path: global/services/mysql-cluster/8.0/mysql-daemons/chart/values/*
+          - path: global/services/linux/ubuntu/chart/values/*
         repoURL: 'https://github.com/sabababoy/labondemand'
         revision: HEAD
   template:
     metadata:
-      name: '{{path.basename}}-mysql-daemons'
+      name: '{{path.basename}}-linux-ubuntu'
     spec:
       destination:
         namespace: argocd
@@ -21,7 +21,7 @@ spec:
       source:
         repoURL: 'https://github.com/sabababoy/labondemand.git'
         targetRevision: HEAD
-        path: global/services/mysql-cluster/8.0/mysql-daemons/chart
+        path: global/services/linux/ubuntu/chart
         helm:
           valueFiles:
             - 'values/{{path.basename}}/values.yaml'

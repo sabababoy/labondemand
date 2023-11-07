@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: {{ .Values.name }}
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         image: sabababoy/ubuntu
         command: ["/bin/sh", "-c"]
         args: [

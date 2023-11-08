@@ -1,5 +1,5 @@
-name: "aleksandr-karmazin-linux-ubuntu"
+name: "aleksandr-karmazin-linux-ubuntu-20-04"
 namespace: "aleksandr-karmazin"
-port: 443
+port: 22
 configmap:
-  name: "aleksandr-karmazin-linux-ubuntu"
+  name: "aleksandr-karmazin-linux-ubuntu-20-04"

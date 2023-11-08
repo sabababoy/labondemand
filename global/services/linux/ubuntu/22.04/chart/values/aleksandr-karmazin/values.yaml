@@ -1,0 +1,5 @@
+name: "aleksandr-karmazin-linux-ubuntu"
+namespace: "aleksandr-karmazin"
+port: 443
+configmap:
+  name: "aleksandr-karmazin-linux-ubuntu"

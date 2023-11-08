@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: linux-fedora-manager
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        directories:
+          - path: global/services/linux/fedora/*
+        repoURL: 'https://github.com/sabababoy/labondemand'
+        revision: HEAD
+  template:
+    metadata:
+      name: 'linux-{{path.basename}}-manager'
+    spec:
+      destination:
+        namespace: argocd
+        server: 'https://kubernetes.default.svc'
+      project: default
+      source:
+        repoURL: 'https://github.com/sabababoy/labondemand.git'
+        targetRevision: HEAD
+        path: global/services/linux/fedora/{{path.basename}}
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true

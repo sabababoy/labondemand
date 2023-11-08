@@ -1,0 +1,4 @@
+apiVersion: v2
+name: linux ubuntu
+description: A Helm chart for linux ubuntu
+version: 0.1.0

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.name}}
+  namespace: {{ .Values.namespace }}
+spec:
+  clusterIP: None
+  selector:
+    app: {{ .Values.name }}
+  ports:
+  - name: ssh
+    protocol: TCP
+    port: 22
+    targetPort: 22

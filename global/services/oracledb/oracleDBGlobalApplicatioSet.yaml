@@ -1,18 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: mysql-manager
+  name: oracledb-manager
   namespace: argocd
 spec:
   generators:
     - git:
         directories:
-          - path: global/services/mysql/*
+          - path: global/services/oracledb/*
         repoURL: 'https://github.com/sabababoy/labondemand'
         revision: HEAD
   template:
     metadata:
-      name: 'mysql-{{path.basename}}'
+      name: 'oracledb-{{path.basename}}'
     spec:
       destination:
         namespace: argocd
@@ -21,7 +21,7 @@ spec:
       source:
         repoURL: 'https://github.com/sabababoy/labondemand.git'
         targetRevision: HEAD
-        path: global/services/mysql/{{path.basename}}
+        path: global/services/oracledb/{{path.basename}}
       syncPolicy:
         automated:
           prune: true

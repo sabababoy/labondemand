@@ -1,4 +1,4 @@
 apiVersion: v2
-name: linux ubuntu
-description: A Helm chart for linux ubuntu
+name: oracledb 21.3.0
+description: A Helm chart for oracledb 21.3.0
 version: 0.1.0

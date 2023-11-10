@@ -1,9 +1,9 @@
 image: "mysql:latest"
-name: "aleksandr-karmazin-mysql-1.0"
+name: "aleksandr-karmazin-mysql-1-0"
 namespace: "aleksandr-karmazin"
 port: 3306
 configmap:
-  name: "aleksandr-karmazin-mysql-1.0"
+  name: "aleksandr-karmazin-mysql-1-0"
   data:
     MYSQL_ROOT_PASSWORD: "test"
   

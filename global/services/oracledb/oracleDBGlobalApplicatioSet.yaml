@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: mysql-manager
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        directories:
+          - path: global/services/mysql/*
+        repoURL: 'https://github.com/sabababoy/labondemand'
+        revision: HEAD
+  template:
+    metadata:
+      name: 'mysql-{{path.basename}}'
+    spec:
+      destination:
+        namespace: argocd
+        server: 'https://kubernetes.default.svc'
+      project: default
+      source:
+        repoURL: 'https://github.com/sabababoy/labondemand.git'
+        targetRevision: HEAD
+        path: global/services/mysql/{{path.basename}}
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true

@@ -1,5 +1,5 @@
-name: "aleksandr-karmazin-oracledb-21.3.0"
+name: "aleksandr-karmazin-oracledb-21-3-0"
 namespace: "aleksandr-karmazin"
 port: 22
 configmap:
-  name: "aleksandr-karmazin-oracledb-21.3.0"
+  name: "aleksandr-karmazin-oracledb-21-3-0"

@@ -18,7 +18,11 @@ spec:
       containers:
       - name: {{ .Values.name }}
         imagePullPolicy: Always
-        image: container-registry.oracle.com/database/free:latest
+        image: sabababoy/oracledb:23.3.0.0
+        command: ["/bin/sh", "-c"]
+        args: [
+          "ssh-keygen -A && /usr/sbin/sshd -D & /opt/oracle/runOracle.sh"
+        ]
         ports:
         - containerPort: {{ .Values.port }}
         env:

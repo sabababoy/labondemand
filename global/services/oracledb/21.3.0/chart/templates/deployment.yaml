@@ -18,7 +18,7 @@ spec:
       containers:
       - name: {{ .Values.name }}
         imagePullPolicy: Always
-        image: docker pull container-registry.oracle.com/database/free:latest
+        image: container-registry.oracle.com/database/free:latest
         ports:
         - containerPort: {{ .Values.port }}
         env:

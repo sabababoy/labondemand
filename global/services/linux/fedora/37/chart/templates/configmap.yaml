@@ -6,6 +6,6 @@ metadata:
   labels: 
     app: {{ .Values.user }}-{{ .Values.postfix }}
 data:
-  {{- range $key, $value := .Values.configmap.data }}
+  {{- range $key, $value := .Values.data }}
   {{ $key }}: {{ $value | quote }}
   {{- end }}

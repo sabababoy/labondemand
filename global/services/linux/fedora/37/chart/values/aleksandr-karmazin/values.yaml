@@ -1,5 +1,0 @@
-name: "aleksandr-karmazin-linux-fedora-37"
-namespace: "aleksandr-karmazin"
-port: 22
-configmap:
-  name: "aleksandr-karmazin-linux-fedora-37"

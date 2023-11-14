@@ -26,10 +26,10 @@ spec:
         ports:
         - containerPort: 22
         env:
-        {{- range $key, $value := .Values.configmap.data }}
+        {{- range $key, $value := .Values.data }}
         - name: {{ $key }}
           valueFrom:
             configMapKeyRef:
-              name: {{ $.Values.configmap.name }}
+              name: {{ $.Values.user }}
               key: {{ $key }}
         {{- end }}

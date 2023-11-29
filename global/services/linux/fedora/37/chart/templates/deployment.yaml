@@ -33,3 +33,5 @@ spec:
               name: {{ $.Values.user }}
               key: {{ $key }}
         {{- end }}
+      nodeSelector:
+        kubernetes.io/os: linux

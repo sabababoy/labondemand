@@ -29,3 +29,5 @@ spec:
               name: {{ $.Values.configmap.name }}
               key: {{ $key }}
         {{- end }}
+      nodeSelector:
+        kubernetes.io/os: linux

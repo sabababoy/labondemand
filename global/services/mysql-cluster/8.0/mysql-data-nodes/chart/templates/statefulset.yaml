@@ -27,4 +27,6 @@ spec:
         ports:
         - name: ndbd
           containerPort: 2202
+      nodeSelector:
+        kubernetes.io/os: linux
       

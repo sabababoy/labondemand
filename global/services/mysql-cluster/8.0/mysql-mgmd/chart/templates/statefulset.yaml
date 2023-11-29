@@ -47,3 +47,5 @@ spec:
       - name: config-volume
         configMap:
           name: {{ .Values.configmap.name }}-{{ .Values.version }}
+      nodeSelector:
+        kubernetes.io/os: linux

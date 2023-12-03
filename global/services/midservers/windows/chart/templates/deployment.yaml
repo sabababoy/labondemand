@@ -21,11 +21,6 @@ spec:
         image: "sabababoy/mid-server-windows:utah"
         ports:
         - containerPort: {{ .Values.port }}
-        tolerations:
-        - key: "os"
-          operator: "Equal"
-          value: "windows"
-          effect: "NoSchedule"
         env:
         {{- range $key, $value := .Values.configmap.data }}
         - name: {{ $key }}
@@ -35,4 +30,9 @@ spec:
               key: {{ $key }}
         {{- end }}
       nodeSelector:
-        kubernetes.io/os: linux
+        kubernetes.io/os: windows
+      tolerations:
+        - key: "os"
+          operator: "Equal"
+          value: "windows"
+          effect: "NoSchedule"

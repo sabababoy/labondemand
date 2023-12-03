@@ -1,4 +1,4 @@
-name: "aleksandr-karmazin-midserver"
+name: "aleksandr-karmazin-windows-midserver"
 namespace: "aleksandr-karmazin"
 port: 443
 configmap:

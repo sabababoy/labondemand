@@ -16,9 +16,9 @@ spec:
         app: {{ .Values.name }}
     spec:
       containers:
-      - name: "sabababoy/mid-server-windows:utah"
+      - name: {{ .Values.name }}
         imagePullPolicy: IfNotPresent
-        image: {{ .Values.image }}
+        image: "sabababoy/mid-server-windows:utah"
         ports:
         - containerPort: {{ .Values.port }}
         tolerations:

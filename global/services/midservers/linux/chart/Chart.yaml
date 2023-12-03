@@ -1,0 +1,4 @@
+apiVersion: v2
+name: linux-midservers
+description: A Helm chart for linux midservers
+version: 0.1.0

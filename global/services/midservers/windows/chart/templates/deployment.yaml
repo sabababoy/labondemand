@@ -16,7 +16,7 @@ spec:
         app: {{ .Values.name }}
     spec:
       containers:
-      - name: {{ .Values.name }}
+      - name: "sabababoy/mid-server-windows:utah"
         imagePullPolicy: IfNotPresent
         image: {{ .Values.image }}
         ports:

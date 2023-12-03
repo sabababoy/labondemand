@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: windows-midservers-manager
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        directories:
+          - path: global/services/midservers/windows/chart/values/*
+        repoURL: 'https://github.com/sabababoy/labondemand'
+        revision: HEAD
+  template:
+    metadata:
+      name: '{{path.basename}}-windows-midserver'
+    spec:
+      destination:
+        namespace: argocd
+        server: 'https://kubernetes.default.svc'
+      project: default
+      source:
+        repoURL: 'https://github.com/sabababoy/labondemand.git'
+        targetRevision: HEAD
+        path: global/services/midservers/windows/chart
+        helm:
+          valueFiles:
+            - 'values/{{path.basename}}/values.yaml'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
+
+

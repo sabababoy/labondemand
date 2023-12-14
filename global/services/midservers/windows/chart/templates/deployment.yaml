@@ -16,7 +16,7 @@ spec:
         app: {{ .Values.name }}
     spec:
       securityContext:
-        windowsoptions:
+        windowsOptions:
           gmsaCredentialSpecName: "k8swindows"
       containers:
       - name: {{ .Values.name }}

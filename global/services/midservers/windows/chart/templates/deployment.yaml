@@ -15,9 +15,9 @@ spec:
       labels:
         app: {{ .Values.name }}
     spec:
-      securityContext:
-        windowsOptions:
-          gmsaCredentialSpecName: "k8swindows"
+      # securityContext:
+      #   windowsOptions:
+      #     gmsaCredentialSpecName: "k8swindows"
       containers:
       - name: {{ .Values.name }}
         imagePullPolicy: Always

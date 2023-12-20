@@ -15,6 +15,7 @@ spec:
       labels:
         app: {{ .Values.name }}
     spec:
+      hostNetwork: true
       securityContext:
         windowsOptions:
           gmsaCredentialSpecName: "k8swindows"
@@ -22,6 +23,10 @@ spec:
       - name: {{ .Values.name }}
         imagePullPolicy: Always
         image: "sabababoy/mid-server-windows:utah"
+        securityContext:
+          windowsOptions:
+            hostProcess: true
+            runAsUserName: "NT AUTHORITY\\SYSTEM" 
         ports:
         - containerPort: {{ .Values.port }}
         env:

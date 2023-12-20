@@ -23,6 +23,8 @@ spec:
       - name: {{ .Values.name }}
         imagePullPolicy: Always
         image: "sabababoy/mid-server-windows:utah"
+        command: ["cmd.exe"]
+        args: ["/c", "ping", "-t", "localhost"]
         securityContext:
           windowsOptions:
             hostProcess: true

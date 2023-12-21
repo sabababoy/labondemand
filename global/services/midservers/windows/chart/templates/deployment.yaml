@@ -15,7 +15,6 @@ spec:
       labels:
         app: {{ .Values.name }}
     spec:
-      # hostNetwork: true
       securityContext:
         windowsOptions:
           gmsaCredentialSpecName: "k8swindows"
@@ -23,12 +22,6 @@ spec:
       - name: {{ .Values.name }}
         imagePullPolicy: Always
         image: "sabababoy/mid-server-windows:utah"
-        # command: ["cmd.exe"]
-        # args: ["/c", "ping", "-t", "localhost"]
-        # securityContext:
-        #   windowsOptions:
-        #     hostProcess: true
-        #     runAsUserName: "NT AUTHORITY\\SYSTEM" 
         columeMounts:
         - name: {{ .Values.name }}-volume
           mountPath: "C:\snc_mid_server"

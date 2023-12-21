@@ -15,7 +15,7 @@ spec:
       labels:
         app: {{ .Values.name }}
     spec:
-      hostNetwork: true
+      # hostNetwork: true
       securityContext:
         windowsOptions:
           gmsaCredentialSpecName: "k8swindows"
@@ -25,12 +25,18 @@ spec:
         image: "sabababoy/mid-server-windows:utah"
         command: ["cmd.exe"]
         args: ["/c", "ping", "-t", "localhost"]
-        securityContext:
-          windowsOptions:
-            hostProcess: true
-            runAsUserName: "NT AUTHORITY\\SYSTEM" 
+        # securityContext:
+        #   windowsOptions:
+        #     hostProcess: true
+        #     runAsUserName: "NT AUTHORITY\\SYSTEM" 
+        columeMounts:
+        - name: {{ .Values.name }}-volume
+          mountPath: "C:\snc_mid_server"
         ports:
         - containerPort: {{ .Values.port }}
+        volumes:
+        - name: {{ .Values.name }}-volume
+          hostPath: C:\snc_mid_server
         env:
         {{- range $key, $value := .Values.configmap.data }}
         - name: {{ $key }}

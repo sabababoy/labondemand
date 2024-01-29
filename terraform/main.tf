@@ -28,7 +28,7 @@ data "vsphere_virtual_machine" "vm_template" {
   datacenter_id             = data.vsphere_datacenter.dc.id
 }
 
-resource "vsphere_virtual_machine" "test" {
+resource "vsphere_virtual_machine" "test-domain" {
   name                      = var.vmname
   resource_pool_id          = data.vsphere_compute_cluster.cluster.resource_pool_id
   datastore_id              = data.vsphere_datastore.datastore.id
@@ -39,19 +39,6 @@ resource "vsphere_virtual_machine" "test" {
 
   scsi_type                 = data.vsphere_virtual_machine.vm_template.scsi_type
   firmware                  = "efi"
-
-  provisioner "remote-exec" {
-    connection {
-      type = "winrm"
-      user = var.windowsuser
-      password = var.windowsuserpassword
-      host = "${vsphere_virtual_machine.test.default_ip_address}"
-      https = false
-      insecure = true
-    }
-
-    inline = var.installation_commands
-  }
 
   network_interface {
     network_id              = data.vsphere_network.network.id
@@ -67,4 +54,15 @@ resource "vsphere_virtual_machine" "test" {
   clone {
     template_uuid           = data.vsphere_virtual_machine.vm_template.id
     }
+    
+  customize {
+    windows_options{
+      computer_name         = “Auto-deploy-001”
+      join_domain           = var.join_domain
+      domain_admin_user     = var.domain_admin_user
+      domain_admin_password = var.domain_admin_password
+      auto_logon           = "false"
+    # auto_logon_count     = "5"
+    }
+  }
 }

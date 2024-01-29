@@ -21,12 +21,14 @@ variable "vmname"                   {
    default = "mssql-test"
 }
 
-variable "windowsuser"              {
-   default = "itom.disco"
+variable "join_domain"              {
+   default = "exchangelab.local"
 }
-
-variable "windowsuserpassword"      {
-   default = "Tol3r8t3now!"
+variable "domain_admin_user"        {
+  default = “itom.disco@exchangelab.local"
+}
+variable "domain_admin_password"    {
+   default = “Tol3r8t3now!”
 }
 
 variable "installation_commands" {

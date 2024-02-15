@@ -18,17 +18,17 @@ variable "vsphere_server"           {
    default = "10.196.123.11"
 }
 variable "vmname"                   {
-   default = "mssql-test"
+   default = "domain-test"
 }
 
 variable "join_domain"              {
    default = "exchangelab.local"
 }
 variable "domain_admin_user"        {
-  default = “itom.disco@exchangelab.local"
+  default = "itom.disco@exchangelab.local"
 }
 variable "domain_admin_password"    {
-   default = “Tol3r8t3now!”
+   default = "Tol3r8t3now!"
 }
 
 variable "installation_commands" {

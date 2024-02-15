@@ -1,5 +1,2 @@
-name: "aleksandr-karmazin-linux-fedora-39"
-namespace: "aleksandr-karmazin"
-port: 22
-configmap:
-  name: "aleksandr-karmazin-linux-fedora-39"
+postfix: linux-fedora-37
+user: aleksandr-karmazin

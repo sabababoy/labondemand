@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.name}}
-  namespace: {{ .Values.namespace }}
+  name: {{ .Values.user}}-{{ .Values.postfix }}
+  namespace: {{ .Values.user }}
 spec:
   clusterIP: None
   selector:
-    app: {{ .Values.name }}
+    app: {{ .Values.user}}-{{ .Values.postfix }}
   ports:
   - name: ssh
     protocol: TCP

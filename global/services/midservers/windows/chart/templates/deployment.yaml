@@ -1,41 +1,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.name }}
-  namespace: {{ .Values.namespace }}
+  name: {{ .Values.user }}-{{ .Values.postfix }}
+  namespace: {{ .Values.user}}
   labels:
-    app: {{ .Values.name }}
+    app: {{ .Values.user }}-{{ .Values.postfix }}
 spec:
   replicas: {{ .Values.replicaCount | default 1}}
   selector:
     matchLabels:
-      app: {{ .Values.name }}
+      app: {{ .Values.user }}-{{ .Values.postfix }}
   template:
     metadata:
       labels:
-        app: {{ .Values.name }}
+        app: {{ .Values.user }}-{{ .Values.postfix }}
     spec:
-      securityContext:
-        windowsOptions:
-          gmsaCredentialSpecName: "k8swindows"
       containers:
-      - name: {{ .Values.name }}
+      - name: {{ .Values.user }}-{{ .Values.postfix }}
         imagePullPolicy: Always
-        image: "sabababoy/mid-server-windows:utah"
+        image: sabababoy/mid-server-windows:utah
+        command: ["/bin/sh", "-c"]
+        args: [
+          "ssh-keygen -A && /usr/sbin/sshd -D"
+        ]
         ports:
-        - containerPort: {{ .Values.port }}
+        - containerPort: 22
         env:
-        {{- range $key, $value := .Values.configmap.data }}
+        {{- range $key, $value := .Values.data }}
         - name: {{ $key }}
           valueFrom:
             configMapKeyRef:
-              name: {{ $.Values.configmap.name }}
+              name: {{ $.Values.user }}
               key: {{ $key }}
         {{- end }}
       nodeSelector:
-        kubernetes.io/os: windows
-      tolerations:
-        - key: "os"
-          operator: "Equal"
-          value: "windows"
-          effect: "NoSchedule"
+        kubernetes.io/os: linux

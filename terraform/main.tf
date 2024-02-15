@@ -28,7 +28,7 @@ data "vsphere_virtual_machine" "vm_template" {
   datacenter_id             = data.vsphere_datacenter.dc.id
 }
 
-resource "vsphere_virtual_machine" "test-domain" {
+resource "vsphere_virtual_machine" "test" {
   name                      = var.vmname
   resource_pool_id          = data.vsphere_compute_cluster.cluster.resource_pool_id
   datastore_id              = data.vsphere_datastore.datastore.id
@@ -53,16 +53,16 @@ resource "vsphere_virtual_machine" "test-domain" {
 
   clone {
     template_uuid           = data.vsphere_virtual_machine.vm_template.id
-    }
     
-  customize {
-    windows_options{
-      computer_name         = “Auto-deploy-001”
-      join_domain           = var.join_domain
-      domain_admin_user     = var.domain_admin_user
-      domain_admin_password = var.domain_admin_password
-      auto_logon           = "false"
-    # auto_logon_count     = "5"
+    customize {
+      windows_options{
+        computer_name         = "Auto-deploy-001"
+        join_domain           = var.join_domain
+        domain_admin_user     = var.domain_admin_user
+        domain_admin_password = var.domain_admin_password
+        auto_logon           = "false"
+      # auto_logon_count     = "5"
+      }
     }
   }
 }

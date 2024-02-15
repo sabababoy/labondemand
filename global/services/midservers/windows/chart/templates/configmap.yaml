@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Values.configmap.name }}
+  name: {{ .Values.user }}
   namespace: {{ .Values.namespace }}
   labels: 
-    app: {{ .Values.name }}
+    app: {{ .Values.user }}-{{ .Values.postfix }}
 data:
-  {{- range $key, $value := .Values.configmap.data }}
+  {{- range $key, $value := .Values.data }}
   {{ $key }}: {{ $value | quote }}
   {{- end }}

@@ -1,0 +1,7 @@
+postfix: mid-server
+user: asen-petrov
+data:
+  MID_INSTANCE_URL: "https://asendemo1.service-now.com/"
+  MID_INSTANCE_USERNAME: "mid_admin_asen_2"
+  MID_INSTANCE_PASSWORD: "Testing123"
+  MID_SERVER_NAME: "test_mid_asen"

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Values.user }}
+  name: {{ .Values.user }}-{{ .Values.postfix }}
   namespace: {{ .Values.namespace }}
   labels: 
     app: {{ .Values.user }}-{{ .Values.postfix }}

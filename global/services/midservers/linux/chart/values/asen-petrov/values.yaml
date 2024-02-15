@@ -1,4 +1,4 @@
-postfix: mid-server
+postfix: linux-midserver
 user: asen-petrov
 data:
   MID_INSTANCE_URL: "https://asendemo1.service-now.com/"

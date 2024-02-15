@@ -19,10 +19,6 @@ spec:
       - name: {{ .Values.user }}-{{ .Values.postfix }}
         imagePullPolicy: Always
         image: sabababoy/mid
-        command: ["/bin/sh", "-c"]
-        args: [
-          "ssh-keygen -A && /usr/sbin/sshd -D"
-        ]
         ports:
         - containerPort: 22
         env:

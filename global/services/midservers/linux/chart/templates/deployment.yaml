@@ -30,7 +30,7 @@ spec:
         - name: {{ $key }}
           valueFrom:
             configMapKeyRef:
-              name: {{ $.Values.user }}-{{ .Values.postfix }}
+              name: {{ $.Values.user }}-{{ $.Values.postfix }}
               key: {{ $key }}
         {{- end }}
       nodeSelector:

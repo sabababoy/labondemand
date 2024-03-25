@@ -1,0 +1,4 @@
+apiVersion: v2
+name: windows-midservers
+description: A Helm chart for windows midservers
+version: 0.1.0

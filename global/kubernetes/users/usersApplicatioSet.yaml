@@ -1,13 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: global-manager
+  name: users-manager
   namespace: argocd
 spec:
   generators:
     - git:
         directories:
-          - path: global/*
+          - path: global/kubernetes/users/chart/values/*
         repoURL: 'https://github.com/sabababoy/labondemand'
         revision: HEAD
   template:
@@ -21,10 +21,15 @@ spec:
       source:
         repoURL: 'https://github.com/sabababoy/labondemand.git'
         targetRevision: HEAD
-        path: global/{{path.basename}}
+        path: global/kubernetes/users/chart
+        helm:
+          valueFiles:
+            - 'values/{{path.basename}}/values.yaml'
       syncPolicy:
         automated:
           prune: true
           selfHeal: true
         syncOptions:
         - CreateNamespace=true
+
+

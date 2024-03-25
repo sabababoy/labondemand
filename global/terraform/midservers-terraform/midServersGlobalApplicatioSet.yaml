@@ -7,7 +7,7 @@ spec:
   generators:
     - git:
         directories:
-          - path: global/terraform/midservers/*
+          - path: global/terraform/midservers-terraform/*
         repoURL: 'https://github.com/sabababoy/labondemand'
         revision: HEAD
   template:
@@ -21,7 +21,7 @@ spec:
       source:
         repoURL: 'https://github.com/sabababoy/labondemand.git'
         targetRevision: HEAD
-        path: global/terraform/midservers/{{path.basename}}
+        path: global/terraform/midservers-terraform/{{path.basename}}
       syncPolicy:
         automated:
           prune: true

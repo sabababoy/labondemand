@@ -18,7 +18,7 @@ spec:
         ]
         volumeMounts:
         - name: {{ .Values.user }}-{{ .Values.postfix }}-terraform-config-volume
-          mountPath: /var.tf
+          mountPath: /terraform
         env:
         {{- range $key, $value := .Values.data }}
         - name: {{ $key }}

@@ -1,6 +1,8 @@
 FROM ubuntu:22.04
 
-COPY main.tf .
+RUN mkdir /terraform
+COPY main.tf /terraform
+WORKDIR /terraform
 
 RUN apt-get update
 RUN apt-get install -y unzip wget

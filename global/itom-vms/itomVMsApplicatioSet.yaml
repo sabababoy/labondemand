@@ -1,18 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: windows-terraform-midservers-manager
+  name: itom-vms-manager
   namespace: argocd
 spec:
   generators:
     - git:
         directories:
-          - path: global/terraform/midservers-terraform/windows/chart/values/*
+          - path: global/itom-vms/*
         repoURL: 'https://github.com/sabababoy/labondemand'
         revision: HEAD
   template:
     metadata:
-      name: '{{path.basename}}-windows-terraform-midserver'
+      name: '{{path.basename}}-itom-vms'
     spec:
       destination:
         namespace: argocd
@@ -21,15 +21,10 @@ spec:
       source:
         repoURL: 'https://github.com/sabababoy/labondemand.git'
         targetRevision: HEAD
-        path: global/terraform/midservers-terraform/windows/chart
-        helm:
-          valueFiles:
-            - 'values/{{path.basename}}/values.yaml'
+        path: global/itom-vms/{{path.basename}}
       syncPolicy:
         automated:
           prune: true
           selfHeal: true
         syncOptions:
         - CreateNamespace=true
-
-

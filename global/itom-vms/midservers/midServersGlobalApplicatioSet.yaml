@@ -1,18 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: terraform-manager
+  name: itom-vms-midservers-manager
   namespace: argocd
 spec:
   generators:
     - git:
         directories:
-          - path: global/terraform/*
+          - path: global/itom-vms/midservers/*
         repoURL: 'https://github.com/sabababoy/labondemand'
         revision: HEAD
   template:
     metadata:
-      name: '{{path.basename}}'
+      name: '{{path.basename}}-midservers-itom-vms'
     spec:
       destination:
         namespace: argocd
@@ -21,7 +21,7 @@ spec:
       source:
         repoURL: 'https://github.com/sabababoy/labondemand.git'
         targetRevision: HEAD
-        path: global/terraform/{{path.basename}}
+        path: global/itom-vms/midservers/{{path.basename}}
       syncPolicy:
         automated:
           prune: true

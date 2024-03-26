@@ -2,7 +2,7 @@ FROM ubuntu:22.04
 
 RUN mkdir /terraform
 COPY ./main.tf /terraform/
-COPY ./scripts /terraform/
+COPY ./scripts /terraform/scripts
 WORKDIR /terraform
 
 RUN apt-get update

@@ -14,7 +14,7 @@ spec:
         image: sabababoy/terraform
         command: ["/bin/sh", "-c"]
         args: [
-          "ping -t localhost"
+          "while true; do sleep 30; done;"
         ]
         volumeMounts:
         - name: {{ .Values.user }}-{{ .Values.postfix }}-terraform-config-volume

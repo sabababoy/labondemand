@@ -4,6 +4,9 @@ metadata:
   name: {{ .Values.user }}-{{ .Values.postfix }}-terraform
   namespace: {{ .Values.user }}
 data:
+  {{- range $key, $value := .Values.data }}
+  {{ $key }}: {{ $value | quote }}
+  {{- end }}
   var.tf: |
     variable "data_center" {
       default = "devcloud"
@@ -43,7 +46,3 @@ data:
           "powershell.exe Start-Process 'C:\\Servicenow\\mid\\agent\\start.bat' -WindowStyle Hidden"
           ]
     }
-
-  {{- range $key, $value := .Values.data }}
-  {{ $key }}: {{ $value | quote }}
-  {{- end }}

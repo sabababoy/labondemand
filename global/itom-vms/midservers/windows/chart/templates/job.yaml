@@ -17,7 +17,8 @@ spec:
         args: [
           "terraform init; terraform apply -auto-approve;"
         ]
-        {{- else if eq .Values.type "destroy" }}
+        {{- end }}
+        {{- if eq .Values.type "destroy" }}
         args: [
           "terraform init; terraform destroy -auto-approve;"
         ]

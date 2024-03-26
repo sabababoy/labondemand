@@ -12,7 +12,7 @@ spec:
         revision: HEAD
   template:
     metadata:
-      name: '{{path.basename}}-midservers-itom-vms'
+      name: 'itom-vms-{{path.basename}}-midservers'
     spec:
       destination:
         namespace: argocd

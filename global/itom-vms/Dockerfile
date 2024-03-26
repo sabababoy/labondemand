@@ -1,6 +1,7 @@
 FROM ubuntu:22.04
 
 RUN mkdir /terraform
+RUN mkdir /terraform/scripts
 COPY ./main.tf /terraform/
 COPY ./scripts /terraform/scripts
 WORKDIR /terraform

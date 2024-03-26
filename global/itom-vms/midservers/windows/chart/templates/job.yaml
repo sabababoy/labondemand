@@ -13,8 +13,13 @@ spec:
         imagePullPolicy: Always
         image: sabababoy/terraform
         command: ["/bin/sh", "-c"]
+        {{- if eq .Values.type  "deploy" }}
         args: [
-          "while true; do sleep 30; done;"
+          "terraform init; terraform apply -auto-approve;"
+        ]
+        {{- else if eq .Values.type "destroy" }}
+        args: [
+          "terraform init; terraform destroy -auto-approve;"
         ]
         volumeMounts:
         - name: {{ .Values.user }}-{{ .Values.postfix }}-terraform-config-volume

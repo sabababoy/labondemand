@@ -84,7 +84,7 @@ resource "vsphere_virtual_machine" "midserver" {
   }
 
   provisioner "file" {
-    source    = "./setupmidserver.ps1"
+    source    = "./scripts/setupmidserver.ps1"
     destination = "C:\\setupmidserver.ps1"
 
     connection {

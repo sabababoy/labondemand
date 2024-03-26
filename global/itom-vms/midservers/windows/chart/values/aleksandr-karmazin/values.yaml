@@ -1,2 +1,3 @@
 user: "aleksandr-karmazin"
 postfix: "midserver-test"
+type: deploy

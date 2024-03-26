@@ -21,6 +21,7 @@ spec:
         args: [
           "terraform init; terraform destroy -auto-approve;"
         ]
+        {{- end }}
         volumeMounts:
         - name: {{ .Values.user }}-{{ .Values.postfix }}-terraform-config-volume
           mountPath: /terraform/var.tf

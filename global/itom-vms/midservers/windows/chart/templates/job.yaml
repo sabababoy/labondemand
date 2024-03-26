@@ -19,9 +19,6 @@ spec:
         ]
         {{- end }}
         {{- if eq .Values.type "destroy" }}
-        # args: [
-        #   "terraform init; terraform destroy -auto-approve;"
-        # ]
         args: [
           "while true; do sleep 30; done;"
         ]

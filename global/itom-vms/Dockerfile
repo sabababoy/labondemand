@@ -1,7 +1,7 @@
 FROM ubuntu:22.04
 
 RUN mkdir /terraform
-COPY main.tf /terraform
+COPY main.tf /terraform/
 WORKDIR /terraform
 
 RUN apt-get update

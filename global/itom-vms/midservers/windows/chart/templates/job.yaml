@@ -19,8 +19,11 @@ spec:
         ]
         {{- end }}
         {{- if eq .Values.type "destroy" }}
+        # args: [
+        #   "terraform init; terraform destroy -auto-approve;"
+        # ]
         args: [
-          "terraform init; terraform destroy -auto-approve;"
+          "while true; do sleep 30; done;"
         ]
         {{- end }}
         volumeMounts:

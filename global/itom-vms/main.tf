@@ -1,13 +1,13 @@
 terraform {
   backend "s3" {
     endpoints = {
-      s3 = var.s3-url
+      s3 = "http://10.196.203.149:32694"
     }
     bucket = "terraform"
-    key = var.bucket-path
+    key = "mideserver/utah/aleksandr-karmazin.tfstate"
     region = "main"
-    access_key = var.s3-access-key
-    secret_key = var.s3-secret-key
+    access_key = "terraform"
+    secret_key = "terraformSecretKey!"
     skip_credentials_validation = true
     skip_requesting_account_id = true
     skip_metadata_api_check = true
@@ -53,7 +53,7 @@ data "vsphere_guest_os_customization" "gosc1" {
 name          = "Windows2022_Standard_Customization_Spec"
 }
 
-resource "vsphere_virtual_machine" var.vmname {
+resource "vsphere_virtual_machine" "vm" {
   name                      = var.vmname
   resource_pool_id          = data.vsphere_compute_cluster.cluster.resource_pool_id
   datastore_id              = data.vsphere_datastore.datastore.id
@@ -82,7 +82,7 @@ resource "vsphere_virtual_machine" var.vmname {
 		  id = data.vsphere_guest_os_customization.gosc1.id
     }
   }
-  
+
 	provisioner "remote-exec" {
   	connection {
   		type     = "winrm"

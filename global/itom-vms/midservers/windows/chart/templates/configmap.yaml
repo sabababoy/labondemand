@@ -27,22 +27,23 @@ data:
         default = "10.198.1.13"
     }
     variable "vmname" {
-        default = "midserver"
+        default = "midserver-{{ .Values.user }}"
     }
     variable "developer" {
       default = "{{ .Values.user }}"
     }
     variable "application-name" {
-      default = "midserver-utah"
+      default = "midserver-{{ .Values.user }}"
     }
 
     variable "instalation_script" {
       description = "MID SERVER SET UP"
       type = list(string)
       default = [
-          "powershell.exe Write-Output 'SETTING UP MID SERVER'",
-          "powershell.exe -File C:\\setupmidserver.ps1 -Schedule",
-          "powershell.exe Write-Output 'MID SERVER CONFIGURED'",
-          "powershell.exe Start-Process 'C:\\Servicenow\\mid\\agent\\start.bat' -WindowStyle Hidden"
+          "setx $INSTANCE_URL '{{ .Values.instanceUrl }}'",
+          "setx $USERNAME '{{ .Values.username }}'",
+          "setx $PASSWORD '{{ .Values.password }}'",
+          "setx $MID_NAME '{{ .Values.midName }}'",
+          "powershell.exe -File C:\\Installation Scripts\\midserver\\install.ps1 -Schedule"
           ]
     }

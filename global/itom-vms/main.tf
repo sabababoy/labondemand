@@ -82,22 +82,6 @@ resource "vsphere_virtual_machine" "midserver" {
 		  id = data.vsphere_guest_os_customization.gosc1.id
     }
   }
-
-  provisioner "file" {
-    source    = "./scripts/setupmidserver.ps1"
-    destination = "C:\\setupmidserver.ps1"
-
-    connection {
-      type     = "winrm"
-      user     = "Administrator"
-      password = "Tol3r8t3now!"
-      host     = self.default_ip_address
-      port     = 5986
-      https    = true
-      insecure    = true
-      timeout  = "5m"
-     }
-  }
   
 	provisioner "remote-exec" {
   	connection {

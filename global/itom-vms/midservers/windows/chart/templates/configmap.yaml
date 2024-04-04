@@ -57,10 +57,6 @@ data:
       description = "MID SERVER SET UP"
       type = list(string)
       default = [
-          "powershell $INSTANCE_URL = '{{ .Values.instanceUrl }}'",
-          "powershell $USERNAME = '{{ .Values.username }}'",
-          "powershell $PASSWORD = '{{ .Values.password }}'",
-          "powershell $MID_NAME = '{{ .Values.midName }}'",
-          "powershell.exe -File C:\\Installation Scripts\\midserver\\install.ps1 -Schedule"
+          "powershell.exe echo 'test'"
           ]
     }

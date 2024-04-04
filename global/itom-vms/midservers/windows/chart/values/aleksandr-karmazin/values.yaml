@@ -1,4 +1,6 @@
 user: "aleksandr-karmazin"
+application: "midserver"
+version: "utah"
 postfix: "midserver-test"
 instanceUrl: "empakarmazin.service-now.com"
 username: "testMidServer"

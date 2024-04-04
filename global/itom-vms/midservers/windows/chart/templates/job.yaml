@@ -15,7 +15,7 @@ spec:
         command: ["/bin/sh", "-c"]
         {{- if eq .Values.type  "deploy" }}
         args: [
-          "terraform init; terraform apply -auto-approve;"
+          "while true; do sleep 30; done;"
         ]
         {{- end }}
         {{- if eq .Values.type "destroy" }}

@@ -32,8 +32,25 @@ data:
     variable "developer" {
       default = "{{ .Values.user }}"
     }
+
     variable "application-name" {
       default = "midserver-{{ .Values.user }}"
+    }
+
+    variable "s3-url" {
+      default = "http://10.196.203.149:32694"
+    }
+
+    variable "bucket-path" {
+      default = "{{ .Values.application }}/{{ .Values.version }}/{{ .Values.user }}.tfstate"
+    }
+
+    variable "s3-access-key" {
+      default = "terraform"
+    }
+
+    variable "s3-secret-key" {
+      default = "terraformSecretKey!"
     }
 
     variable "instalation_script" {

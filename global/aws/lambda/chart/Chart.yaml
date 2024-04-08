@@ -1,0 +1,4 @@
+apiVersion: v2
+name: aws-lambda
+description: A Helm chart for aws lambda
+version: 0.1.0

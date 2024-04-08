@@ -53,7 +53,7 @@ data "vsphere_guest_os_customization" "gosc1" {
 name          = "Windows2022_Standard_Customization_Spec"
 }
 
-resource "vsphere_virtual_machine" "vm" {
+resource "vsphere_virtual_machine" "testvm" {
   name                      = var.vmname
   resource_pool_id          = data.vsphere_compute_cluster.cluster.resource_pool_id
   datastore_id              = data.vsphere_datastore.datastore.id

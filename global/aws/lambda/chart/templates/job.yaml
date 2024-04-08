@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: {{ .Values.user }}-{{ .Values.postfix }}-terraform
-  namespace: {{ .Values.user}}
+  namespace: aws
   labels:
     app: {{ .Values.user }}-{{ .Values.postfix }}-terraform
 spec:
@@ -12,7 +12,7 @@ spec:
       - name: {{ .Values.user }}-{{ .Values.postfix }}-terraform
         imagePullPolicy: Always
         image: sabababoy/terraform
-        workingDir: /terraform/itomlab
+        workingDir: /terraform/aws/{{ .Values.resource }}
         command: ["/bin/sh", "-c"]
         {{- if eq .Values.type  "deploy" }}
         args: [
@@ -24,11 +24,17 @@ spec:
           "terraform init; terraform destroy -auto-approve;"
         ]
         {{- end }}
-        volumeMounts:
-        - name: {{ .Values.user }}-{{ .Values.postfix }}-terraform-config-volume
-          mountPath: /terraform/itomlab/var.tf
-          subPath: var.tf
         env:
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: aws-creds
+              key: access_key
+        - name: AWS_SECRET_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: aws-creds
+              key: secret_key
         {{- range $key, $value := .Values.data }}
         - name: {{ $key }}
           valueFrom:
@@ -36,10 +42,6 @@ spec:
               name: {{ $.Values.user }}-{{ $.Values.postfix }}-terraform
               key: {{ $key }}
         {{- end }}
-      volumes:
-      - name: {{ .Values.user }}-{{ .Values.postfix }}-terraform-config-volume
-        configMap:
-          name: {{ .Values.user }}-{{ .Values.postfix }}-terraform
       restartPolicy: Never
       nodeSelector:
         kubernetes.io/os: linux

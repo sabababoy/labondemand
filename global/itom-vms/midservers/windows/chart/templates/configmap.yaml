@@ -37,26 +37,14 @@ data:
       default = "midserver-{{ .Values.user }}"
     }
 
-    variable "s3-url" {
-      default = "http://10.196.203.149:32694"
-    }
-
-    variable "bucket-path" {
-      default = "{{ .Values.application }}/{{ .Values.version }}/{{ .Values.user }}.tfstate"
-    }
-
-    variable "s3-access-key" {
-      default = "terraform"
-    }
-
-    variable "s3-secret-key" {
-      default = "terraformSecretKey!"
-    }
-
     variable "instalation_script" {
       description = "MID SERVER SET UP"
       type = list(string)
       default = [
-          "powershell.exe echo 'test'"
+          "setx INSTANCE_URL '{{ .Values.instanceUrl }}'",
+          "setx USERNAME '{{ .Values.username }}'",
+          "setx PASSWORD '{{ .Values.password }}'",
+          "setx MID_NAME '{{ .Values.midName }}'",
+          "powershell.exe -File C:\\Installation Scripts\\midserver\\install.ps1 -Schedule"
           ]
     }

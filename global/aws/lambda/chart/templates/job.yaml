@@ -14,16 +14,9 @@ spec:
         image: sabababoy/terraform
         workingDir: /terraform/aws/{{ .Values.resource }}
         command: ["/bin/sh", "-c"]
-        {{- if eq .Values.type  "deploy" }}
         args: [
-          "terraform init; terraform apply -auto-approve;"
+          "terraform init; if [ $ACTION = 'deploy' ]; then terraform apply -auto-approve; elif [ $ACTION = 'destroy' ]; then terraform destroy -auto-approve; else echo 'Error. Unknown action'; fi"
         ]
-        {{- end }}
-        {{- if eq .Values.type "destroy" }}
-        args: [
-          "terraform init; terraform destroy -auto-approve;"
-        ]
-        {{- end }}
         env:
         - name: AWS_ACCESS_KEY_ID
           valueFrom:
@@ -35,13 +28,8 @@ spec:
             secretKeyRef:
               name: aws-creds
               key: secret_key
-        {{- range $key, $value := .Values.data }}
-        - name: {{ $key }}
-          valueFrom:
-            configMapKeyRef:
-              name: {{ $.Values.user }}-{{ $.Values.postfix }}-terraform
-              key: {{ $key }}
-        {{- end }}
+        - name: ACTION
+          value: {{ .Values.action }}
       restartPolicy: Never
       nodeSelector:
         kubernetes.io/os: linux

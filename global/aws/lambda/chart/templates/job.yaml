@@ -28,6 +28,11 @@ spec:
             secretKeyRef:
               name: aws-creds
               key: secret_key
+        - name: ACTION
+          valueFrom:
+            configMapKeyRef:
+              name: {{ $.Values.user }}-{{ $.Values.postfix }}-terraform
+              key: ACTION
         {{- range $key, $value := .Values.data }}
         - name: {{ $key }}
           valueFrom:

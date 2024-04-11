@@ -4,6 +4,7 @@ metadata:
   name: {{ .Values.user }}-{{ .Values.postfix }}-terraform
   namespace: aws
 data:
+  ACTION: {{ .Values.action }}
   {{- range $key, $value := .Values.data }}
   {{ $key }}: {{ $value | quote }}
   {{- end }}

@@ -28,8 +28,13 @@ spec:
             secretKeyRef:
               name: aws-creds
               key: secret_key
-        - name: ACTION
-          value: {{ .Values.action }}
+        {{- range $key, $value := .Values.data }}
+        - name: {{ $key }}
+          valueFrom:
+            configMapKeyRef:
+              name: {{ $.Values.user }}-{{ $.Values.postfix }}-terraform
+              key: {{ $key }}
+        {{- end }}
       restartPolicy: Never
       nodeSelector:
         kubernetes.io/os: linux

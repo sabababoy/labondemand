@@ -1,4 +1,5 @@
 user: "aleksandr-karmazin"
 resource: "lambda"
 postfix: "lambda-test"
-action: destroy
+data:
+  ACTION: destroy

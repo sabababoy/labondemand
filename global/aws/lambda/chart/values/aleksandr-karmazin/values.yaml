@@ -1,4 +1,4 @@
 user: "aleksandr-karmazin"
 resource: "lambda"
 postfix: "lambda-test"
-action: "destroy"
+action: "deploy"

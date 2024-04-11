@@ -50,7 +50,7 @@ resource "aws_lambda_function" "test" {
     role = aws_iam_role.lambda_role.arn
     handler = "lambda_function.lambda_handler"
 
-    source_code_hash = filebase64sha256("function.zip")
+    source_code_hash = filebase64sha256("lambda_function.zip")
 
     runtime = "python3.8"
 }

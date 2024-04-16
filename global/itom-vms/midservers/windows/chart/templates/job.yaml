@@ -15,7 +15,7 @@ spec:
         workingDir: /terraform/itomlab
         command: ["/bin/sh", "-c"]
         args: [
-          "terraform init; if [ $ACTION = 'deploy' ]; then terraform apply -auto-approve; elif [ $ACTION = 'destroy' ]; then terraform destroy -auto-approve; else echo 'Error. Unknown action'; fi"
+          "sleep 900000; terraform init; if [ $ACTION = 'deploy' ]; then terraform apply -auto-approve; elif [ $ACTION = 'destroy' ]; then terraform destroy -auto-approve; else echo 'Error. Unknown action'; fi"
         ]
         volumeMounts:
         - name: {{ .Values.user }}-{{ .Values.postfix }}-terraform-config-volume

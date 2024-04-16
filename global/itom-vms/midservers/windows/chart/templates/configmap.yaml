@@ -46,6 +46,6 @@ data:
           "setx USERNAME '{{ .Values.username }}'",
           "setx PASSWORD '{{ .Values.password }}'",
           "setx MID_NAME '{{ .Values.midName }}'",
-          "powershell.exe -File \"C:\\Installation Scripts\\midserver\\install.ps1'\""
+          "powershell.exe -File \"C:\\Installation Scripts\\midserver\\install.ps1\""
           ]
     }

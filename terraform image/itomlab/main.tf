@@ -45,7 +45,7 @@ data "vsphere_network" "network" {
 }
 
 data "vsphere_virtual_machine" "vm_template" {
-  name                      = "kuntest-template"
+  name                      = "win2022template-kuntest-01"
   datacenter_id             = data.vsphere_datacenter.dc.id
 }
 

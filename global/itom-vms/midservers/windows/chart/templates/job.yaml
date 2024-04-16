@@ -1,34 +1,32 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ .Values.user }}-{{ .Values.postfix }}-terraform
+  name: {{ .Values.user }}-{{ .Values.postfix }}-terraform-{{ .Values.action }}
   namespace: {{ .Values.user}}
   labels:
-    app: {{ .Values.user }}-{{ .Values.postfix }}-terraform
+    app: {{ .Values.user }}-{{ .Values.postfix }}-terraform-{{ .Values.action }}
 spec:
   template:
     spec:
       containers:
-      - name: {{ .Values.user }}-{{ .Values.postfix }}-terraform
+      - name: {{ .Values.user }}-{{ .Values.postfix }}-terraform-{{ .Values.action }}
         imagePullPolicy: Always
         image: sabababoy/terraform
         workingDir: /terraform/itomlab
         command: ["/bin/sh", "-c"]
-        {{- if eq .Values.type  "deploy" }}
         args: [
-          "while true; do sleep 30; done;"
+          "terraform init; if [ $ACTION = 'deploy' ]; then terraform apply -auto-approve; elif [ $ACTION = 'destroy' ]; then terraform destroy -auto-approve; else echo 'Error. Unknown action'; fi"
         ]
-        {{- end }}
-        {{- if eq .Values.type "destroy" }}
-        args: [
-          "terraform init; terraform destroy -auto-approve;"
-        ]
-        {{- end }}
         volumeMounts:
         - name: {{ .Values.user }}-{{ .Values.postfix }}-terraform-config-volume
           mountPath: /terraform/itomlab/var.tf
           subPath: var.tf
         env:
+        - name: ACTION
+          valueFrom:
+            configMapKeyRef:
+              name: {{ $.Values.user }}-{{ $.Values.postfix }}-terraform
+              key: ACTION
         {{- range $key, $value := .Values.data }}
         - name: {{ $key }}
           valueFrom:

@@ -4,6 +4,7 @@ metadata:
   name: {{ .Values.user }}-{{ .Values.postfix }}-terraform
   namespace: {{ .Values.user }}
 data:
+  ACTION: {{ .Values.action }}
   {{- range $key, $value := .Values.data }}
   {{ $key }}: {{ $value | quote }}
   {{- end }}
@@ -45,6 +46,6 @@ data:
           "setx USERNAME '{{ .Values.username }}'",
           "setx PASSWORD '{{ .Values.password }}'",
           "setx MID_NAME '{{ .Values.midName }}'",
-          "powershell.exe -File C:\\Installation Scripts\\midserver\\install.ps1 -Schedule"
+          "powershell.exe -File 'C:\\Installation Scripts\\midserver\\install.ps1' -Schedule"
           ]
     }

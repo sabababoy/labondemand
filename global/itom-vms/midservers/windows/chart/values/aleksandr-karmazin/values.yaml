@@ -6,4 +6,4 @@ instanceUrl: "empakarmazin.service-now.com"
 username: "testMidServer"
 password: "testPassword1!"
 midName: "testMidServer"
-type: deploy
+action: deploy

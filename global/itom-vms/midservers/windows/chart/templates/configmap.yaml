@@ -42,10 +42,6 @@ data:
       description = "MID SERVER SET UP"
       type = list(string)
       default = [
-          "powershell.exe -Command \"Set-Item -Path env:INSTANCE_URL -Value '{{ .Values.instanceUrl }}'\"",
-          "powershell.exe -Command \"Set-Item -Path env:USERNAME -Value '{{ .Values.username }}'\"",
-          "powershell.exe -Command \"Set-Item -Path env:PASSWORD -Value '{{ .Values.password }}'\"",
-          "powershell.exe -Command \"Set-Item -Path env:MID_NAME -Value '{{ .Values.midName }}'\"",
-          "powershell.exe -File \"C:\\Installation Scripts\\midserver\\install.ps1\""
+          "powershell.exe -Command \"$env:INSTANCE_URL = '{{ .Values.instanceUrl }}'; $env:MID_USERNAME = '{{ .Values.username }}'; $env:MID_USER_PASSWORD = '{{ .Values.password }}'; $env:MID_NAME = '{{ .Values.midName }}'; & C:\\Installation Scripts\\midserver\\install.ps1\"",
           ]
     }

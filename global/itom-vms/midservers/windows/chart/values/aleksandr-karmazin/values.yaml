@@ -6,4 +6,4 @@ instanceUrl: "empakarmazin.service-now.com"
 username: "testMidServer"
 password: "testPassword1!"
 midName: "testMidServer"
-action: deploy
+action: destroy

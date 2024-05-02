@@ -10,7 +10,7 @@ terraform {
       s3 = "http://10.196.203.149:32694"
     }
     bucket = "terraform"
-    key = "aws/alteon/aleksandr-karmazin.tfstate"
+    key = "aws/ec2/linux/aleksandr-karmazin.tfstate"
     region = "main"
     access_key = "terraform"
     secret_key = "terraformSecretKey!"
@@ -22,3 +22,17 @@ terraform {
     workspace_key_prefix = ""
   }
 }
+
+data "aws_subnet" "existing_subnet" {
+  id = "subnet-0d65da523f29c0040"
+}
+
+resourcce "aws_instance" "ec2_instance" {
+  ami = var.ami_id
+  instance_type = var.instance_type
+  subnet_id = data.aws_subnet.existing_subnet.id
+  tags = {
+    Name = "Linux ec2 instance for testing"
+  }
+}
+

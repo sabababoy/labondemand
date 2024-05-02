@@ -1,0 +1,5 @@
+user: "aleksandr-karmazin"
+resource: "ec2"
+postfix: "ec2-test"
+ami: "ami-03c3351e3ce9d04eb"
+action: "destroy"

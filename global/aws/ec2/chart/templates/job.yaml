@@ -1,0 +1,53 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Values.user }}-{{ .Values.postfix }}-terraform-{{ .Values.action }}
+  namespace: aws
+  labels:
+    app: {{ .Values.user }}-{{ .Values.postfix }}-terraform-{{ .Values.action }}
+spec:
+  template:
+    spec:
+      containers:
+      - name: {{ .Values.user }}-{{ .Values.postfix }}-terraform-{{ .Values.action }}
+        imagePullPolicy: Always
+        image: sabababoy/terraform
+        workingDir: /terraform/aws/{{ .Values.resource }}
+        command: ["/bin/sh", "-c"]
+        args: [
+          "sleep 90000; terraform init; if [ $ACTION = 'deploy' ]; then terraform apply -auto-approve; elif [ $ACTION = 'destroy' ]; then terraform destroy -auto-approve; else echo 'Error. Unknown action'; fi"
+        ]
+        volumeMounts:
+        - name: {{ .Values.user }}-{{ .Values.postfix }}-terraform-config-volume
+          mountPath: ./ec2_instance.tf
+          subPath: ec2_instance.tf
+        env:
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: aws-creds
+              key: access_key
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: aws-creds
+              key: secret_key
+        - name: ACTION
+          valueFrom:
+            configMapKeyRef:
+              name: {{ $.Values.user }}-{{ $.Values.postfix }}-terraform
+              key: ACTION
+        {{- range $key, $value := .Values.data }}
+        - name: {{ $key }}
+          valueFrom:
+            configMapKeyRef:
+              name: {{ $.Values.user }}-{{ $.Values.postfix }}-terraform
+              key: {{ $key }}
+        {{- end }}
+      volumes:
+      - name: {{ .Values.user }}-{{ .Values.postfix }}-terraform-config-volume
+        configMap:
+          name: {{ .Values.user }}-{{ .Values.postfix }}-terraform
+      restartPolicy: Never
+      nodeSelector:
+        kubernetes.io/os: linux

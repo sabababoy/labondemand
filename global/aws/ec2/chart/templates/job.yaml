@@ -19,8 +19,8 @@ spec:
         ]
         volumeMounts:
         - name: {{ .Values.user }}-{{ .Values.postfix }}-terraform-config-volume
-          mountPath: ./ec2_instance.tf
-          subPath: ec2_instance.tf
+          mountPath: /terraform/aws/{{ .Values.resource }}/ec2_instance.tfvars
+          subPath: ec2_instance.tfvars
         env:
         - name: AWS_ACCESS_KEY_ID
           valueFrom:

@@ -1,18 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: aws-lambda-manager
+  name: aws-ec2-manager
   namespace: argocd
 spec:
   generators:
     - git:
         directories:
-          - path: global/aws/lambda/chart/values/*
+          - path: global/aws/ec2/chart/values/*
         repoURL: 'https://github.com/sabababoy/labondemand'
         revision: HEAD
   template:
     metadata:
-      name: '{{path.basename}}-aws-lambda'
+      name: '{{path.basename}}-aws-ec2'
     spec:
       destination:
         namespace: argocd
@@ -21,7 +21,7 @@ spec:
       source:
         repoURL: 'https://github.com/sabababoy/labondemand.git'
         targetRevision: HEAD
-        path: global/aws/lambda/chart
+        path: global/aws/ec2/chart
         helm:
           valueFiles:
             - 'values/{{path.basename}}/values.yaml'

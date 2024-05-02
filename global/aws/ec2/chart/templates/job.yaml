@@ -15,7 +15,7 @@ spec:
         workingDir: /terraform/aws/{{ .Values.resource }}
         command: ["/bin/sh", "-c"]
         args: [
-          "sleep 90000; terraform init; if [ $ACTION = 'deploy' ]; then terraform apply -auto-approve; elif [ $ACTION = 'destroy' ]; then terraform destroy -auto-approve; else echo 'Error. Unknown action'; fi"
+          "echo test"
         ]
         volumeMounts:
         - name: {{ .Values.user }}-{{ .Values.postfix }}-terraform-config-volume

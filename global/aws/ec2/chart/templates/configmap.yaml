@@ -9,4 +9,4 @@ data:
   {{ $key }}: {{ $value | quote }}
   {{- end }}
   ec2_instance.tfvars: |
-    ami_id = {{ .Values.ami }}
+    ami_id = "{{ .Values.ami }}"

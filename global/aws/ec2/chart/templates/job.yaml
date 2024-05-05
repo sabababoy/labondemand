@@ -15,7 +15,7 @@ spec:
         workingDir: /terraform/aws/{{ .Values.resource }}
         command: ["/bin/sh", "-c"]
         args: [
-          "echo test"
+          "terraform init; if [ $ACTION = 'deploy' ]; then terraform apply -var-file='ec2_instance.tfvars' -auto-approve; elif [ $ACTION = 'destroy' ]; then terraform destroy -auto-approve; else echo 'Error. Unknown action'; fi"
         ]
         volumeMounts:
         - name: {{ .Values.user }}-{{ .Values.postfix }}-terraform-config-volume
